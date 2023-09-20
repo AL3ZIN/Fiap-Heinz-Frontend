@@ -1,0 +1,316 @@
+
+<section>
+    <div class="container">
+        <aside [ngClass]="{'open': isSidebarOpen}" class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <img src="/assets/feedbacks_imgs/logo.png" alt="">
+                    <h1 class="primary">I<span class="danger">A</span><span class="success">B</span></h1>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="#">
+                    <span><fa-icon [icon]="faChartPie"></fa-icon></span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="#">
+                    <span><fa-icon [icon]="faChartLine"></fa-icon></span>
+                    <h3>Analytics</h3>
+                </a>
+                <a href="#" class="active">
+                    <span><fa-icon [icon]="faEnvelope"></fa-icon></span>
+                    <h3>Feedbacks</h3>
+                    <span class="message-count">26</span>
+                </a>
+                <a href="#">
+                    <span><fa-icon [icon]="faGear"></fa-icon></span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="#">
+                    <span><fa-icon [icon]="faRightFromBracket"></fa-icon></span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!------------------------- END OF ASIDE --------------------------->
+        <main>
+            <h1>Feedbacks</h1>
+            <div class="insights">
+                <div class="environment">
+                   <span> <fa-icon [icon]="faLeaf"></fa-icon></span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Environment Feedbacks</h3>
+                            <h1>1.254</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+                <!----------------------- END OF SALES ---------------------->
+                <div class="social">
+                    <fa-icon [icon]="faUserGroup"></fa-icon>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Social Feedbacks</h3>
+                            <h1>2.492</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>62%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+                <!----------------------- END OF EXPENSES ---------------------->
+                <div class="governance">
+                    <fa-icon [icon]="faBuilding"></fa-icon>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Governance Feedbacks</h3>
+                            <h1>960</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>44%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+                <!----------------------- END OF INCOME ---------------------->
+            </div>
+            <!----------------------- END OF INSIGHTS ---------------------->
+            <div class="recent-feedbacks">
+                <h2>Feedbacks Recentes</h2>
+                <table>
+                    <thead>
+                        <tr>
+
+                            <th class="colab-head">Colaborador</th>
+                            <th class="classe-head">Classe</th>
+                            <th class="id-head">ID</th>
+                            <th class="canal-head">Canal</th>
+                            <th class="rating-head">Rating</th>
+                            <th class="time-head"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-1.jpg" alt="">Alexandre Aguiar</td>
+                            <td class="classe-td">Environment</td>
+                            <td class="id-td">85631</td>
+                            <td class="canal-td">Twitter</td>
+                            <td class="success rating-td">Positive</td>
+                            <td class="text-muted time-td">15:44</td>
+                            <td class="primary">Details</td>
+
+                        </tr>
+                        <tr>
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-2.jpg" alt="">Bruno Nascimento</td>
+                            <td class="classe-td">Environment</td>
+                            <td class="id-td">85632</td>
+                            <td class="canal-td">Instagram</td>
+                            <td class="success rating-td">Positive</td>
+                            <td class="text-muted time-td">12:42</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-3.jpg" alt="">Isac Vietro</td>
+                            <td class="classe-td">Governance</td>
+                            <td class="id-td">85633</td>
+                            <td class="canal-td">Twitter</td>
+                            <td class="danger rating-td">Negative</td>
+                            <td class="text-muted time-td">10:34</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-1.jpg" alt="">Alexandre Aguiar</td>
+                            <td class="classe-td">Social</td>
+                            <td class="id-td">85634</td>
+                            <td class="canal-td">Facebook</td>
+                            <td class="primary rating-td">Neutral</td>
+                            <td class="text-muted time-td">10:02</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-1.jpg" alt="">Alexandre Aguiar</td>
+                            <td class="classe-td">Environment</td>
+                            <td class="id-td">85631</td>
+                            <td class="canal-td">Twitter</td>
+                            <td class="success rating-td">Positive</td>
+                            <td class="text-muted time-td">15:44</td>
+                            <td class="primary">Details</td>
+
+                        </tr>
+                        <tr>
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-2.jpg" alt="">Bruno Nascimento</td>
+                            <td class="classe-td">Environment</td>
+                            <td class="id-td">85632</td>
+                            <td class="canal-td">Instagram</td>
+                            <td class="success rating-td">Positive</td>
+                            <td class="text-muted time-td">12:42</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-3.jpg" alt="">Isac Vietro</td>
+                            <td class="classe-td">Governance</td>
+                            <td class="id-td">85633</td>
+                            <td class="canal-td">Twitter</td>
+                            <td class="danger rating-td">Negative</td>
+                            <td class="text-muted time-td">10:34</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-1.jpg" alt="">Alexandre Aguiar</td>
+                            <td class="classe-td">Social</td>
+                            <td class="id-td">85634</td>
+                            <td class="canal-td">Facebook</td>
+                            <td class="success rating-td">Positive</td>
+                            <td class="text-muted time-td">10:02</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-1.jpg" alt="">Alexandre Aguiar</td>
+                            <td class="classe-td">Social</td>
+                            <td class="id-td">85634</td>
+                            <td class="canal-td">Facebook</td>
+                            <td class="success rating-td">Positive</td>
+                            <td class="text-muted time-td">10:02</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td class="colab"><img src="/assets/feedbacks_imgs/profile-1.jpg" alt="">Alexandre Aguiar</td>
+                            <td class="classe-td">Social</td>
+                            <td class="id-td">85634</td>
+                            <td class="canal-td">Facebook</td>
+                            <td class="success rating-td">Positive</td>
+                            <td class="text-muted time-td">10:02</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#">Show All</a>
+            </div>
+        </main>
+        <!----------------------- END OF MAIN ---------------------->
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-symbols-sharp">menu</span>
+                </button>
+                <div class="theme-toggler" (click)="toggleTheme()">
+                    <span class="active"><fa-icon [icon]="faSun"></fa-icon></span>
+                    <span><fa-icon [icon]="faMoon"></fa-icon></span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Alexandre</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="/assets/feedbacks_imgs/profile-1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!----------------------- END OF TOP ---------------------->
+            <div class="recent-updates">
+                <h2>Recent Updates</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="/assets/feedbacks_imgs/profile-2.jpg" alt="">
+                        </div>
+                        <div class="message">
+                            <p><b>Bruno Nascimento</b> received his order or Night lion tech GPS drone.</p>
+                            <small class="text-muted">2minutes Ago</small>
+                        </div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="/assets/feedbacks_imgs/profile-1.jpg" alt="">
+                        </div>
+                        <div class="message">
+                            <p><b>Alexandre Aguiar </b> received his order or Night lion tech GPS drone.</p>
+                            <small class="text-muted">2minutes Ago</small>
+                        </div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="/assets/feedbacks_imgs/profile-3.jpg" alt="">
+                        </div>
+                        <div class="message">
+                            <p><b>Isac Vietro</b> received his order or Night lion tech GPS drone.</p>
+                            <small class="text-muted">2minutes Ago</small>
+                        </div>
+                    </div>
+                </div>
+                <!----------------------- END OF RECENT UPDATE ---------------------->
+                <div class="destaques">
+                    <h2>Destaques</h2>
+                    <div class="item condimentos">
+                        <div class="icon">
+                            <span class="active"><fa-icon [icon]="faUtensils"></fa-icon></span>
+                        </div>
+                        <div class="right">
+                            <div class="info">
+                                <h3>CONDIMENTOS</h3>
+                                <small class="text-muted">Last 24 hours</small>
+                            </div>
+                            <h5 class="success">+39%</h5>
+                            <h3>3849</h3>
+                        </div>
+                    </div>
+                    <div class="item congelados">
+                        <div class="icon">
+                            <span class="material-symbols-sharp active">ac_unit</span>
+                        </div>
+                        <div class="right">
+                            <div class="info">
+                                <h3>CONGELADOS</h3>
+                                <small class="text-muted">Last 24 hours</small>
+                            </div>
+                            <h5 class="danger">-17%</h5>
+                            <h3>1100</h3>
+                        </div>
+
+                    </div>
+                    <div class="item conservados">
+                        <div class="icon">
+                            <span class="material-symbols-sharp active">oil_barrel</span>
+                        </div>
+                        <div class="right">
+                            <div class="info">
+                                <h3>CONSERVADOS</h3>
+                                <small class="text-muted">Last 24 hours</small>
+                            </div>
+                            <h5 class="success">+25%</h5>
+                            <h3>849</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="c:\Users\aleag\Desktop\Challenge Heinz\Feedbacks\js\feedback.js"></script>
+</section>
