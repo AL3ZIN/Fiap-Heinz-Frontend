@@ -11,6 +11,11 @@ import { NavBarComponent } from './components/pages_content/nav-bar/nav-bar.comp
 import { WeeklyOverviewComponent } from './components/charts/weekly-overview/weekly-overview.component';
 import { LineGraphRatingComponent } from './components/charts/line-graph-rating/line-graph-rating.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RecentEditorTableComponent } from './components/tables/recent-editor-table/recent-editor-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { FormsComponent } from './components/forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +26,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavBarComponent,
     WeeklyOverviewComponent,
     LineGraphRatingComponent,
+    RecentEditorTableComponent,
+    FormsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

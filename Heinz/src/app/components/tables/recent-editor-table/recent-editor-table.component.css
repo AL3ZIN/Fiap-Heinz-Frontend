@@ -1,0 +1,25 @@
+.full-width-table {
+  width: 100%;
+  border-radius: 10px;
+}
+.container-table{
+/* display: none; */
+border-radius: 10px;
+}
+table.mat-mdc-table.full-width-table{
+  border-radius: var(--border-radius-1);
+
+}
+th:last-child{
+  border-radius: 0 var(--border-radius-1) 0 0;
+}
+th:first-child{
+  border-radius: var(--border-radius-1) 0 0 0;
+}
+tr.mat-mdc-header-row{
+  background-color: var(--color-background);
+  
+}
+tr:hover{
+  background-color: var(--color-background);
+}
