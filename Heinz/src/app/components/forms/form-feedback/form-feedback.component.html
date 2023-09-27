@@ -1,0 +1,47 @@
+<app-sidebar></app-sidebar>
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" #frm="ngForm">
+            <h1> Sign Up </h1>
+
+            <fieldset>
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" name="usuario" [(ngModel)]="usuario">
+
+                <label for="tipo_feedback">Tipo Feedback:</label>
+                <select id="tipo_feedback" name="tipo_feedback" [(ngModel)]="tipo_feedback">
+                    <option value="Environment" >Environment</option>
+                    <option value="Social" >Social</option>
+                    <option value="Governance" >Governance</option>
+                </select>
+
+                <label for="feedback">Feedback:</label>
+                <textarea id="feedback" name="feedback" [(ngModel)]="feedback"></textarea>
+
+                <label for="job">Rating:</label>
+                <select id="job" name="user_job" [(ngModel)]="rating">
+                    <option value="Positive" >Positive</option>
+                    <option value="Neutral" >Neutral</option>
+                    <option value="Negative" >Negative</option>
+                </select>
+
+                <label for="job">Canal:</label>
+                <select id="job" name="user_job" [(ngModel)]="canal">
+                    <option value="facebook">Facebook</option>
+                    <option value="twitter" >Twitter</option>
+                    <option value="instagram">Instagram</option>
+                </select>
+
+                <label for="data_cadastro">Data do Feedback:</label>
+                <input type="date" id="data_feedback" name="data_feedback" [(ngModel)]="data_feedback">
+
+                <label for="data_cadastro">Data do Cadastro:</label>
+                <input type="date" id="data_cadastro" name="data_cadastro" [(ngModel)]="data_cadastro">
+
+            </fieldset>
+
+            <button type="submit" (click)="cadastrar()">Sign Up</button>
+
+        </form>
+    </div>
+</div>

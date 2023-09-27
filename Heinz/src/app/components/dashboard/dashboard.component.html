@@ -6,7 +6,7 @@
         <div class="main1">
             <h2>ESG | Total Feedbacks</h2>
             <p>Quantidade total de comentarios</p>
-            <h1>2.039</h1>
+            <div id="nfeed"></div>
         </div>
 
         <div class="main2">
@@ -21,7 +21,9 @@
                     </div>
                     <div class="box-text">
                         <p>Environment</p>
-                        <h2>1.3K<span class="box-prcnt">30%</span></h2>
+                        <div id="nTipoEnvironment">
+                            <!-- <span class="box-prcnt">30%</span> -->
+                        </div>
                     </div>
                 </div>
                 <div class="container-box">
@@ -30,7 +32,9 @@
                     </div>
                     <div class="box-text">
                         <p>Social</p>
-                        <h2>0.9K<span class="box-prcnt">22%</span></h2>
+                        <div id="nTipoSocial">
+                            <!-- <span class="box-prcnt">22%</span> -->
+                        </div>
                     </div>
                 </div>
                 <div class="container-box">
@@ -39,7 +43,9 @@
                     </div>
                     <div class="box-text">
                         <p>Governance</p>
-                        <h2>2.8K<span class="box-prcnt">83%</span></h2>
+                        <div id="nTipoGovernance">
+                            <!-- <span class="box-prcnt">83%</span> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,8 +61,13 @@
                 <p>Nota em relação a sentimentação dos clientes</p>
 
             </div>
-            <div class="dstq-rating">
-                <h1>66%<fa-icon class="warning" [icon]="faFaceMeh"></fa-icon></h1>
+            <div class="dstq-rating" id="NPS">
+
+                
+                <fa-icon class="danger  displayn" id="iconNg" [icon]="faFaceAngry"></fa-icon>
+                <fa-icon class="warning displayn" id="iconNt" [icon]="faFaceMeh"></fa-icon>
+                <fa-icon class="success displayn" id="iconPs" [icon]="faFaceSmile"></fa-icon>
+
             </div>
             <div class="detail-rating">
                 <div class="c-rating">
@@ -70,11 +81,10 @@
                         </div>
                     </div>
                     <div class="pb">
-                        <div class="pb-prcnt">
+                        <div class="pb-prcnt" id="nRatingPositive">
                             <div>
                                 <div class="box-prcnt">83%</div>
                             </div>
-                            <p>4.3K</p>
                         </div>
                         <div class="back-pb bg-succes-fade">
                             <div class="frontpb bg-succes pfeed"></div>
@@ -84,7 +94,7 @@
                 <div class="c-rating">
                     <div class="desc-rating">
                         <div class="b-rating">
-                            <fa-icon class="warning" [icon]="faFaceMeh"></fa-icon>
+                            <fa-icon class="warning" id="iconN" [icon]="faFaceMeh"></fa-icon>
                         </div>
                         <div class="desc-r-box">
                             <h3>Neutral</h3>
@@ -92,11 +102,10 @@
                         </div>
                     </div>
                     <div class="pb">
-                        <div class="pb-prcnt">
+                        <div class="pb-prcnt" id="nRatingNeutral">
                             <div>
                                 <div class="box-prcnt">23%</div>
                             </div>
-                            <p>2.8K</p>
                         </div>
                         <div class="back-pb bg-warning-fade">
                             <div class="frontpb bg-warning nfeed"></div>
@@ -114,11 +123,10 @@
                         </div>
                     </div>
                     <div class="pb">
-                        <div class="pb-prcnt">
+                        <div class="pb-prcnt" id="nRatingNegative">
                             <div>
                                 <div class="box-prcnt">13%</div>
                             </div>
-                            <p>2.8K</p>
                         </div>
                         <div class="back-pb bg-danger-fade">
                             <div class="frontpb bg-danger ngfeed"></div>
@@ -142,7 +150,8 @@
                     <div class="social-media-box">
                         <div class="profile-photo"></div>
                         <div class="sm-text">
-                            <h3>2.678<div class="box-prcnt-up">+25%</div></h3>
+                            <h3>2.678<div class="box-prcnt-up">+25%</div>
+                            </h3>
                             <p>Facebook</p>
                         </div>
                     </div>
@@ -155,7 +164,8 @@
                     <div class="social-media-box">
                         <div class="profile-photo"></div>
                         <div class="sm-text">
-                            <h3>2.678<div class="box-prcnt-down">-25%</div></h3>
+                            <h3>2.678<div class="box-prcnt-down">-25%</div>
+                            </h3>
                             <p>Facebook</p>
                         </div>
                     </div>
@@ -168,7 +178,8 @@
                     <div class="social-media-box">
                         <div class="profile-photo"></div>
                         <div class="sm-text">
-                            <h3>2.678 <div class="box-prcnt-up">+25%</div></h3>
+                            <h3>2.678 <div class="box-prcnt-up">+25%</div>
+                            </h3>
                             <p>Facebook</p>
                         </div>
                     </div>

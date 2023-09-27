@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +17,8 @@ import { RecentEditorTableComponent } from './components/tables/recent-editor-ta
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { FormsComponent } from './components/forms/forms.component';
+import { FormFeedbackComponent } from './components/forms/form-feedback/form-feedback.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { FormsComponent } from './components/forms/forms.component';
     WeeklyOverviewComponent,
     LineGraphRatingComponent,
     RecentEditorTableComponent,
-    FormsComponent,
+    AppComponent,
+    FormFeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,8 @@ import { FormsComponent } from './components/forms/forms.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

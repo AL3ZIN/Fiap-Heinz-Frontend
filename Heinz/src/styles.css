@@ -55,10 +55,10 @@
   --box-shadow: var(--color-light) 0px 2px 10px 0px;
 }
 
-h1 {
+/* h1 {
   font-weight: 800;
   font-size: 1.8rem;
-}
+} */
 
 h2 {
   font-weight: 500;
@@ -92,6 +92,13 @@ p {
 b {
   color: var(--color-dark);
 }
+
+.displayn{
+display: none;
+}
+.display{
+  display: block;
+  }
 
 .primary {
   color: var(--color-primary);

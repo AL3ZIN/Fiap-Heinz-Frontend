@@ -3,6 +3,7 @@ package com.iab.api.entities;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,18 +16,21 @@ public class Feedback {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_feedback;
     private String usuario;
-    private String tipo_feedback;
+
+     @Column(name = "tipo_feedback")
+    private String tipo;
+
     private String feedback;
     private String rating;
     private String canal;
     private Date data_feedback;
     private Timestamp data_cadastro;
 
-    public Feedback(int id_feedback, String usuario, String tipo_feedback, String feedback, String rating,
+    public Feedback(int id_feedback, String usuario, String tipo, String feedback, String rating,
             String canal, Date data_feedback, Timestamp data_cadastro) {
         this.id_feedback = id_feedback;
         this.usuario = usuario;
-        this.tipo_feedback = tipo_feedback;
+        this.tipo = tipo;
         this.feedback = feedback;
         this.rating = rating;
         this.canal = canal;
@@ -50,12 +54,12 @@ public class Feedback {
         this.usuario = usuario;
     }
 
-    public String getTipo_feedback() {
-        return tipo_feedback;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipo_feedback(String tipo_feedback) {
-        this.tipo_feedback = tipo_feedback;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getFeedback() {
@@ -97,5 +101,6 @@ public class Feedback {
     public void setData_cadastro(Timestamp data_cadastro) {
         this.data_cadastro = data_cadastro;
     }
+
 
 }

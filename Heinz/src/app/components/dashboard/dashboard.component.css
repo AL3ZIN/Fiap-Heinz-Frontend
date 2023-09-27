@@ -53,7 +53,7 @@ img {
   box-shadow: var(--box-shadow);
   padding: var(--card-padding);
 }
-.main1 > h1 {
+.main1 #nfeed {
   color: var(--color-primary);
   margin-top: 50px;
 }
@@ -69,7 +69,7 @@ img {
 .box-text {
   margin-left: 0.5rem;
 }
-.box-text > h2 {
+.box-text > div {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -202,14 +202,24 @@ img {
   font-size: 3.5rem;
   font-weight: 600;
 }
-.main4 .dstq-rating{
-  display: flex;
-  align-content: center;
+#NPS{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-areas: "h1    icon";
+  font-size: 3rem;
+  font-weight: 600;
   gap: 0.7rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  align-items: center;
 }
-.main4 .dstq-rating div{
-text-align: center;
+
+#NPS fa-icon{
+  grid-area: icon;
+  font-size: 4rem;
 }
+
+
 .main4 .detail-rating{
   display: flex;
   flex-direction: column;

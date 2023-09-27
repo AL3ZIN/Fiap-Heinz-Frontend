@@ -27,6 +27,7 @@ import {
   Tooltip,
   SubTitle,
 } from 'chart.js';
+import { AppService } from 'src/app/app.service';
 Chart.register(
   ArcElement,
   LineElement,
@@ -61,51 +62,59 @@ Chart.register(
 })
 export class LineGraphRatingComponent {
   colorSuccess = '#41f1b6';
-   colorWarning = '#ffbb55';
+  colorWarning = '#ffbb55';
   colorDanger = '#ff7782';
   colorSuccessFade = '#41f1b670';
-  colorDangerFade ='#ff77828f';
+  colorDangerFade = '#ff77828f';
   colorWarningFade = '#ffbb557c';
 
+  constructor(private service: AppService) {}
+
   ngOnInit() {
-    const myChart = new Chart('LineChart', {
-      type: 'line',
-      data: {
-        
-        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
-        datasets: [
-          {
-            label: 'Positive',
-            data: [100, 50, 70, 120, 100],
-            borderColor: this.colorSuccess,
-            backgroundColor: this.colorSuccessFade,
-            fill: true,
-            tension: 0.4
-          },
-          {
-            label: 'Neutral',
-            data: [10, 65, 32, 140, 97],
-            borderColor: this.colorWarning,
-            backgroundColor: this.colorWarningFade,
-            fill: true,
-            tension: 0.4
-          },
-          {
-            label: 'Negative',
-            data: [34, 125, 72, 40, 26],
-            borderColor: this.colorDangerFade,
-            backgroundColor: this.colorDangerFade,
-            fill: true,
-            tension: 0.4,
-          },
-        ]},
-        options: {
-          responsive: true
+    let dadosPositive: any[];
+
+    this.service.getTotalFeedbacks().subscribe((resultData ) => {
+     resultData.jSON
+
+      dadosPositive.push(resultData) ;
+      console.log(dadosPositive);
+
+
+      const myChart = new Chart('LineChart', {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
+          datasets: [
+            {
+              label: 'Positive',
+              data: [dadosPositive, 50, 70, 120],
+              borderColor: this.colorSuccess,
+              backgroundColor: this.colorSuccessFade,
+              fill: true,
+              tension: 0.4,
+            },
+            {
+              label: 'Neutral',
+              data: [10, 65, 32, 140, 97],
+              borderColor: this.colorWarning,
+              backgroundColor: this.colorWarningFade,
+              fill: true,
+              tension: 0.4,
+            },
+            {
+              label: 'Negative',
+              data: [34, 125, 72, 40, 26],
+              borderColor: this.colorDangerFade,
+              backgroundColor: this.colorDangerFade,
+              fill: true,
+              tension: 0.4,
+            },
+          ],
         },
-        
-
-
+        options: {
+          responsive: true,
+        },
+      });
     });
-
   }
 }
