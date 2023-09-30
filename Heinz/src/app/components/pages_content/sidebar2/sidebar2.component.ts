@@ -9,11 +9,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css'],
+  selector: 'app-sidebar2',
+  templateUrl: './sidebar2.component.html',
+  styleUrls: ['./sidebar2.component.css'],
 })
-export class SidebarComponent implements OnInit {
+export class Sidebar2Component implements OnInit {
   isSidebarOpen = false;
   activeLink: string = ''; // Inicialmente definido como vazio
 

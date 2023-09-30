@@ -1,26 +1,22 @@
-<div class="container-table">
-  <table mat-table class="full-width-table" matSort aria-label="Elements">
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.name}}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <mat-paginator #paginator
-      [length]="dataSource.data.length"
-      [pageIndex]="0"
-      [pageSize]="5"
-      [pageSizeOptions]="[5, 10, 20]"
-      aria-label="Select page">
-  </mat-paginator>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Usuário</th>
+      <th>Tipo</th>
+      <th>Rating</th>
+      <th>Canal</th>
+      <th>Cadastro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listaFeedback">
+      <td>{{ item.id_feedback }}</td>
+      <td>{{ item.usuario }}</td>
+      <td>{{ item.tipo }}</td>
+      <td>{{ item.rating }}</td>
+      <td>{{ item.canal }}</td>
+      <td>{{ item.data_cadastro }}</td>
+    </tr>
+  </tbody>
+</table>

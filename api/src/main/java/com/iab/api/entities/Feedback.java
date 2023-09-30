@@ -1,6 +1,5 @@
 package com.iab.api.entities;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
@@ -17,25 +16,31 @@ public class Feedback {
     private int id_feedback;
     private String usuario;
 
-     @Column(name = "tipo_feedback")
+    @Column(name = "tipo_feedback")
     private String tipo;
-
     private String feedback;
     private String rating;
     private String canal;
-    private Date data_feedback;
+
+    @Column(name = "data_feedback")
+    private int dataFeed;
     private Timestamp data_cadastro;
 
     public Feedback(int id_feedback, String usuario, String tipo, String feedback, String rating,
-            String canal, Date data_feedback, Timestamp data_cadastro) {
+            String canal, int dataFeed, Timestamp data_cadastro) {
+        super();
         this.id_feedback = id_feedback;
         this.usuario = usuario;
         this.tipo = tipo;
         this.feedback = feedback;
         this.rating = rating;
         this.canal = canal;
-        this.data_feedback = data_feedback;
+        this.dataFeed = dataFeed;
         this.data_cadastro = data_cadastro;
+    }
+
+    public Feedback() {
+
     }
 
     public int getId_feedback() {
@@ -86,12 +91,12 @@ public class Feedback {
         this.canal = canal;
     }
 
-    public Date getData_feedback() {
-        return data_feedback;
+    public int getDataFeed() {
+        return dataFeed;
     }
 
-    public void setData_feedback(Date data_feedback) {
-        this.data_feedback = data_feedback;
+    public void setDataFeed(String dataFeed) {
+        this.dataFeed =  Integer.parseInt(dataFeed.replace("-", ""));
     }
 
     public Timestamp getData_cadastro() {
@@ -102,5 +107,11 @@ public class Feedback {
         this.data_cadastro = data_cadastro;
     }
 
+    @Override
+    final public String toString() {
+        return "Feedback [id_feedback=" + id_feedback + ", usuario=" + usuario + ", tipo=" + tipo + ", feedback="
+                + feedback + ", rating=" + rating + ", canal=" + canal + ", dataFeed=" + dataFeed + ", data_cadastro="
+                + data_cadastro + "]";
+    }
 
 }

@@ -17,7 +17,9 @@ import { RecentEditorTableComponent } from './components/tables/recent-editor-ta
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatProgressBarModule} from '@angular/material/progress-bar'
 import { FormFeedbackComponent } from './components/forms/form-feedback/form-feedback.component';
+import { Sidebar2Component } from './components/pages_content/sidebar2/sidebar2.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { FormFeedbackComponent } from './components/forms/form-feedback/form-fee
     LineGraphRatingComponent,
     RecentEditorTableComponent,
     AppComponent,
-    FormFeedbackComponent
+    FormFeedbackComponent,
+    Sidebar2Component
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { FormFeedbackComponent } from './components/forms/form-feedback/form-fee
     MatSortModule,
     HttpClientModule,
     FormsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

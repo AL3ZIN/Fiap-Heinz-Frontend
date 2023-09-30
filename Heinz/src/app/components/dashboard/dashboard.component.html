@@ -21,7 +21,7 @@
                     </div>
                     <div class="box-text">
                         <p>Environment</p>
-                        <div id="nTipoEnvironment">
+                        <div id="nTipoEnvironment" class="ESGTypes">
                             <!-- <span class="box-prcnt">30%</span> -->
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="box-text">
                         <p>Social</p>
-                        <div id="nTipoSocial">
+                        <div id="nTipoSocial" class="ESGTypes">
                             <!-- <span class="box-prcnt">22%</span> -->
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="box-text">
                         <p>Governance</p>
-                        <div id="nTipoGovernance">
+                        <div id="nTipoGovernance" class="ESGTypes">
                             <!-- <span class="box-prcnt">83%</span> -->
                         </div>
                     </div>
@@ -63,7 +63,6 @@
             </div>
             <div class="dstq-rating" id="NPS">
 
-                
                 <fa-icon class="danger  displayn" id="iconNg" [icon]="faFaceAngry"></fa-icon>
                 <fa-icon class="warning displayn" id="iconNt" [icon]="faFaceMeh"></fa-icon>
                 <fa-icon class="success displayn" id="iconPs" [icon]="faFaceSmile"></fa-icon>
@@ -81,14 +80,14 @@
                         </div>
                     </div>
                     <div class="pb">
-                        <div class="pb-prcnt" id="nRatingPositive">
+                        <div class="nrating">
                             <div>
-                                <div class="box-prcnt">83%</div>
+                                <div class="box-prcnt">{{percentPositive}}%</div>
                             </div>
+                            <p>{{nRatingPositive}}</p>
                         </div>
-                        <div class="back-pb bg-succes-fade">
-                            <div class="frontpb bg-succes pfeed"></div>
-                        </div>
+                        <mat-progress-bar mode="determinate" [value]="percentPositive"
+                            class="progress-bar-positive"></mat-progress-bar>
                     </div>
                 </div>
                 <div class="c-rating">
@@ -102,14 +101,14 @@
                         </div>
                     </div>
                     <div class="pb">
-                        <div class="pb-prcnt" id="nRatingNeutral">
+                        <div class="nrating">
                             <div>
-                                <div class="box-prcnt">23%</div>
+                                <div class="box-prcnt">{{percentNeutral}}%</div>
                             </div>
+                            <p>{{nRatingNeutral}}</p>
                         </div>
-                        <div class="back-pb bg-warning-fade">
-                            <div class="frontpb bg-warning nfeed"></div>
-                        </div>
+                        <mat-progress-bar mode="determinate" [value]="percentNeutral"
+                            class="progress-bar-neutral"></mat-progress-bar>
                     </div>
                 </div>
                 <div class="c-rating">
@@ -123,14 +122,14 @@
                         </div>
                     </div>
                     <div class="pb">
-                        <div class="pb-prcnt" id="nRatingNegative">
+                        <div class="nrating">
                             <div>
-                                <div class="box-prcnt">13%</div>
+                                <div class="box-prcnt">{{percentNegative}}%</div>
                             </div>
+                            <p>{{nRatingNegative}}</p>
                         </div>
-                        <div class="back-pb bg-danger-fade">
-                            <div class="frontpb bg-danger ngfeed"></div>
-                        </div>
+                        <mat-progress-bar mode="determinate" [value]="percentNegative"
+                            class="progress-bar-negative"></mat-progress-bar>
                     </div>
                 </div>
             </div>
@@ -147,44 +146,51 @@
             <h2>Social Media | Ranking</h2>
             <div class="ranking">
                 <div class="ranking-box">
-                    <div class="social-media-box">
-                        <div class="profile-photo"></div>
+                    <div class="social-media-box" id="ranking1">
+                        <fa-icon class="facebook displayn" [icon]="faFacebook"></fa-icon>
+                        <fa-icon class="twitter displayn" [icon]="faTwitter"></fa-icon>
+                        <fa-icon class="instagram displayn" [icon]="faInstagram"></fa-icon>
                         <div class="sm-text">
-                            <h3>2.678<div class="box-prcnt-up">+25%</div>
-                            </h3>
-                            <p>Facebook</p>
+                            <h3>{{dataPrimary}}</h3>
+                            <p>{{namePrimary}}</p>
                         </div>
                     </div>
                     <div class="sm-nclient">
-                        <h3>200</h3>
+                        <h3>476</h3>
                         <p>clientes</p>
                     </div>
                 </div>
                 <div class="ranking-box">
-                    <div class="social-media-box">
-                        <div class="profile-photo"></div>
+                    <div class="social-media-box" id="ranking2">
+
+                        <fa-icon class="facebook displayn" [icon]="faFacebook"></fa-icon>
+                        <fa-icon class="twitter displayn" [icon]="faTwitter"></fa-icon>
+                        <fa-icon class="instagram displayn" [icon]="faInstagram"></fa-icon>
+
                         <div class="sm-text">
-                            <h3>2.678<div class="box-prcnt-down">-25%</div>
-                            </h3>
-                            <p>Facebook</p>
+                            <h3>{{dataSecondary}}</h3>
+                            <p>{{nameSecondary}}</p>
                         </div>
                     </div>
                     <div class="sm-nclient">
-                        <h3>200</h3>
+                        <h3>202</h3>
                         <p>clientes</p>
                     </div>
                 </div>
                 <div class="ranking-box">
-                    <div class="social-media-box">
-                        <div class="profile-photo"></div>
+                    <div class="social-media-box" id="ranking3">
+
+                        <fa-icon class="facebook displayn" [icon]="faFacebook"></fa-icon>
+                        <fa-icon class="twitter displayn" [icon]="faTwitter"></fa-icon>
+                        <fa-icon class="instagram displayn" [icon]="faInstagram"></fa-icon>
+
                         <div class="sm-text">
-                            <h3>2.678 <div class="box-prcnt-up">+25%</div>
-                            </h3>
-                            <p>Facebook</p>
+                            <h3>{{dataTerciary}}</h3>
+                            <p>{{nameTerciary}}</p>
                         </div>
                     </div>
                     <div class="sm-nclient">
-                        <h3>200</h3>
+                        <h3>178</h3>
                         <p>clientes</p>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-form-feedback',
@@ -18,6 +19,12 @@ export class FormFeedbackComponent {
   constructor(private http: HttpClient) {}
 
   cadastrar() {
+
+    const dataCadastro = new Date();
+    const timestampDataCadastro = format(dataCadastro,"yyyy-MM-dd'T'HH:mm:ss");
+    
+    console.log(timestampDataCadastro);
+
     let BodyData = {
       usuario: this.usuario,
       tipo: this.tipo_feedback,
@@ -25,7 +32,7 @@ export class FormFeedbackComponent {
       rating: this.rating,
       canal: this.canal,
       dataFeed: this.data_feedback,
-      data_cadastro: this.data_cadastro,
+      data_cadastro: timestampDataCadastro,
     };
 
     this.http

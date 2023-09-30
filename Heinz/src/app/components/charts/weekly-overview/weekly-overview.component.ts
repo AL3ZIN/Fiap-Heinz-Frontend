@@ -24,8 +24,9 @@ import {
   Legend,
   Title,
   Tooltip,
-  SubTitle
+  SubTitle,
 } from 'chart.js';
+import { AppService } from 'src/app/app.service';
 Chart.register(
   ArcElement,
   LineElement,
@@ -55,44 +56,74 @@ Chart.register(
 @Component({
   selector: 'app-weekly-overview',
   templateUrl: './weekly-overview.component.html',
-  styleUrls: ['./weekly-overview.component.css']
+  styleUrls: ['./weekly-overview.component.css'],
 })
 export class WeeklyOverviewComponent {
+  constructor(private service: AppService) {}
+
+  dados: Array<number[]> = [];
+  EnvironmentData: number[] = [];
+  SocialData: number[] = [];
+  GovernaceData: number[] = [];
+
+  labels: string[] = []; // Nomes das labels
+
   colorSucess = '#41f1b6';
   colorPrimary = '#7380ec';
   colorDanger = '#ff7782';
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.getGraphTipoDataAsync()
+  }
+  async getGraphTipoDataAsync() {
+    this.service.getGraphTipoData().subscribe((result) => {
+      this.dados = result;
+      this.extractData();
+      this.createChart();
+
+      console.log(this.dados)
+    });
+  }
+  extractData() {
+    if (this.dados.length >= 3) {
+      this.EnvironmentData = this.dados[0];
+      this.SocialData = this.dados[1];
+      this.GovernaceData = this.dados[2];
+      console.log(this.EnvironmentData);
+      console.log(this.SocialData);
+      console.log(this.GovernaceData);
+    }
+  }
+  createChart() {
     const myChart = new Chart('barChart', {
       type: 'bar',
       data: {
         labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
         datasets: [
-
           {
             label: 'Environment',
-            data: [100, 50, 70, 120, 100],
+            data: this.EnvironmentData,
             backgroundColor: [this.colorSucess],
             borderWidth: 0,
             borderRadius: 20,
-            barThickness: 20
+            barThickness: 20,
           },
           {
             label: 'Social',
-            data: [90, 50, 90, 120, 100],
+            data: this.SocialData,
             backgroundColor: [this.colorPrimary],
             borderWidth: 0,
             borderRadius: 20,
-            barThickness: 20
+            barThickness: 20,
           },
           {
             label: 'Governance',
-            data: [20, 70, 40, 140, 120],
+            data: this.GovernaceData,
             backgroundColor: [this.colorDanger],
             borderWidth: 0,
             borderRadius: 20,
             barThickness: 20,
-          }
+          },
         ],
       },
       options: {
@@ -103,17 +134,14 @@ export class WeeklyOverviewComponent {
         },
         scales: {
           x: {
-            grid:{
-              display: false
-            }
+            grid: {
+              display: false,
+            },
           },
           y: {
-
-
-            grid:{
-
-              display: true
-            }
+            grid: {
+              display: true,
+            },
           },
         },
         layout: {

@@ -18,9 +18,12 @@ import {
   faFaceMeh,
   faFaceAngry,
   faFaceSmile,
-  faSortUp,
+  faSortUp
 } from '@fortawesome/free-solid-svg-icons';
 import { AppService } from 'src/app/app.service';
+import { async } from '@angular/core/testing';
+
+import{ faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 @Component({
   selector: 'app-dashboard',
@@ -30,6 +33,21 @@ import { AppService } from 'src/app/app.service';
 export class DashboardComponent implements OnInit {
   isSidebarOpen = false;
   isDarkTheme = false;
+
+  nRatingPositive!: number;
+  nRatingNeutral!: number;
+  nRatingNegative!: number;
+  percentPositive!: number;
+  percentNeutral!: number;
+  percentNegative!: number;
+
+  namePrimary!: string;
+  nameSecondary!: string;
+  nameTerciary!: string;
+
+  dataPrimary!: number;
+  dataSecondary!: number;
+  dataTerciary!: number;
 
   faChartPie = faChartPie;
   faChartLine = faChartLine;
@@ -48,6 +66,10 @@ export class DashboardComponent implements OnInit {
   faFaceAngry = faFaceAngry;
   faFaceSmile = faFaceSmile;
   faSortUp = faSortUp;
+  faFacebook = faFacebook;
+  faTwitter = faTwitter;
+  faInstagram = faInstagram;
+  
 
   constructor(private service:AppService) {}
 
@@ -72,14 +94,11 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     const nFeed = document.getElementById('nfeed');
     const nTipoEnvironment = document.getElementById('nTipoEnvironment');
     const nTipoSocial = document.getElementById('nTipoSocial');
     const nTipoGovernance = document.getElementById('nTipoGovernance');
-    const nRatingPositive = document.getElementById('nRatingPositive');
-    const nRatingNeutral = document.getElementById('nRatingNeutral');
-    const nRatingNegative = document.getElementById('nRatingNegative');
     const NPS = document.getElementById('NPS');
     const iconNg = document.getElementById('iconNg');
     const iconNt = document.getElementById('iconNt');
@@ -89,10 +108,11 @@ export class DashboardComponent implements OnInit {
     const h2Environment = document.createElement('h2');
     const h2Social = document.createElement('h2');
     const h2Governance = document.createElement('h2');
-    const pPositive = document.createElement('p');
-    const pNeutral = document.createElement('p');
-    const pNegative = document.createElement('p');
     const h1NPS = document.createElement('h1');
+
+    const iconRanking1 = document.querySelector("nps1")
+    const iconRanking2 = document.querySelector("nps2")
+    const iconRanking3 = document.querySelector("nps3")
 
     // Numero Total de feedbacks
 
@@ -125,23 +145,6 @@ export class DashboardComponent implements OnInit {
       });
 
 
-      this.service.getNumRatingPositive().subscribe((resultData: any) => {
-        console.log(resultData);
-        pPositive.textContent = resultData;
-        nRatingPositive?.appendChild(pPositive);
-      });
-
-      this.service.getNumRatingNeutral().subscribe((resultData: any) => {
-        console.log(resultData);
-        pNeutral.textContent = resultData;
-        nRatingNeutral?.appendChild(pNeutral);
-      });
-
-      this.service.getNumRatingNegative().subscribe((resultData: any) => {
-        console.log(resultData);
-        pNegative.textContent = resultData;
-        nRatingNegative?.appendChild(pNegative);
-      });
 
     // Nota NPS
     
@@ -163,5 +166,109 @@ export class DashboardComponent implements OnInit {
         }
         NPS?.appendChild(h1NPS);
       });
+
+
+      await this.getNumRatingAsync();
+      await this.getPercentRating();
+      await this.getRanking();
+  }
+  
+  async getNumRatingAsync(): Promise<void>{
+    this.service.getNumRating().subscribe(_data=>{
+      console.log(_data)
+      this.nRatingPositive = _data[0];
+      this.nRatingNeutral = _data[1];
+      this.nRatingNegative = _data[2];
+    })
+
+  }
+  async getPercentRating(): Promise<void>{
+    this.service.getProgressBar().subscribe(_data=>{
+      console.log(_data)
+      this.percentPositive = _data[0];
+      this.percentNeutral = _data[1];
+      this.percentNegative = _data[2];
+    })
+  }
+  async getRanking(): Promise<void>{
+    this.service.getRankingCanal().subscribe(_data=>{
+ 
+  
+      console.log(_data)
+      this.namePrimary = _data[0][0];
+      if (this.namePrimary === 'Facebook') {
+        // Para o nps1, alterar as classes dos ícones correspondentes
+        const iconRanking1 = document.querySelector("#ranking1 .facebook") as HTMLElement;
+        if (iconRanking1) {
+          iconRanking1.classList.remove('displayn');
+          iconRanking1.classList.add('display');
+        }
+      } else if (this.namePrimary === 'Twitter') {
+        // Para o ranking1, alterar as classes dos ícones correspondentes
+        const iconRanking1 = document.querySelector("#ranking1 .twitter") as HTMLElement;
+        if (iconRanking1) {
+          iconRanking1.classList.remove('displayn');
+          iconRanking1.classList.add('display');
+        }
+      } else if (this.namePrimary === 'Instagram') {
+        // Para o ranking1, alterar as classes dos ícones correspondentes
+        const iconRanking1 = document.querySelector("#ranking1 .instagram") as HTMLElement;
+        if (iconRanking1) {
+          iconRanking1.classList.remove('displayn');
+          iconRanking1.classList.add('display');
+        }
+      }
+      this.nameSecondary = _data[1][0];
+      if (this.nameSecondary === 'Facebook') {
+        // Para o nps1, alterar as classes dos ícones correspondentes
+        const iconRanking1 = document.querySelector("#ranking2 .facebook") as HTMLElement;
+        if (iconRanking1) {
+          iconRanking1.classList.remove('displayn');
+          iconRanking1.classList.add('display');
+        }
+      } else if (this.nameSecondary === 'Twitter') {
+        // Para o ranking1, alterar as classes dos ícones correspondentes
+        const iconRanking1 = document.querySelector("#ranking2 .twitter") as HTMLElement;
+        if (iconRanking1) {
+          iconRanking1.classList.remove('displayn');
+          iconRanking1.classList.add('display');
+        }
+      } else if (this.nameSecondary === 'Instagram') {
+        // Para o ranking1, alterar as classes dos ícones correspondentes
+        const iconRanking1 = document.querySelector("#ranking2 .instagram") as HTMLElement;
+        if (iconRanking1) {
+          iconRanking1.classList.remove('displayn');
+          iconRanking1.classList.add('display');
+        }
+      }
+      this.nameTerciary = _data[2][0];
+      if (this.nameTerciary === 'Facebook') {
+        // Para o nps1, alterar as classes dos ícones correspondentes
+        const iconRanking1 = document.querySelector("#ranking3 .facebook") as HTMLElement;
+        if (iconRanking1) {
+          iconRanking1.classList.remove('displayn');
+          iconRanking1.classList.add('display');
+        }
+      } else if (this.nameTerciary === 'Twitter') {
+        // Para o ranking1, alterar as classes dos ícones correspondentes
+        const iconRanking1 = document.querySelector("#ranking3 .twitter") as HTMLElement;
+        if (iconRanking1) {
+          iconRanking1.classList.remove('displayn');
+          iconRanking1.classList.add('display');
+        }
+      } else if (this.nameTerciary === 'Instagram') {
+        // Para o ranking1, alterar as classes dos ícones correspondentes
+        const iconRanking1 = document.querySelector("#ranking3 .instagram") as HTMLElement;
+        if (iconRanking1) {
+          iconRanking1.classList.remove('displayn');
+          iconRanking1.classList.add('display');
+        }
+      }
+      
+
+      this.dataPrimary = Number(_data[0][1]);
+      this.dataSecondary = Number(_data[1][1]);
+      this.dataTerciary = Number( _data[2][1]);
+    })
   }
 }
