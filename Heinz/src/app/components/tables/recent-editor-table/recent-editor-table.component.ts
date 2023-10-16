@@ -1,7 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatTable, MatTableModule } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { AfterViewInit, Component} from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { RecentEditors } from 'src/app/models/recentEditors';
 import { format } from 'date-fns';
@@ -25,9 +22,9 @@ export class RecentEditorTableComponent implements AfterViewInit {
     this.service.getTableRecentEditor().subscribe((_data) => {
       this.listaFeedback = _data;
       for (let i = 0; i < this.listaFeedback.length; i++) {
-        const data = new Date(this.listaFeedback[i].data_cadastro);
-        this.listaFeedback[i].data_cadastro = format(data, 'HH:mm');
-        console.log(this.listaFeedback[i].data_cadastro)
+        const data = new Date(this.listaFeedback[i].dataCadastro);
+        this.listaFeedback[i].dataCadastro = format(data, 'HH:mm');
+        console.log(this.listaFeedback[i].dataCadastro)
       }
 
       console.log(this.listaFeedback);

@@ -1,0 +1,18 @@
+<div class="nav-bar">
+    <button id="menu-btn">
+        <span class="material-symbols-sharp">menu</span>
+    </button>
+    <div class="theme-toggler" (click)="toggleTheme()">
+        <span class="active"><fa-icon [icon]="faSun"></fa-icon></span>
+        <span><fa-icon [icon]="faMoon"></fa-icon></span>
+    </div>
+    <div class="profile">
+        <div class="info">
+            <p>Hey, <b>Alexandre</b></p>
+            <small class="text-muted">Admin</small>
+        </div>
+        <div class="profile-photo">
+            <img src="/assets/feedbacks_imgs/profile-1.jpg" alt="" />
+        </div>
+    </div>
+</div>

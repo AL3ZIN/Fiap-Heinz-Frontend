@@ -3,8 +3,12 @@ package com.iab.api.controllers;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,11 +27,11 @@ public class ProductController {
    @Autowired
    private Repositorio acao;
 
-   @PostMapping("/cadastro")
-   public Feedback cadastro(@RequestBody Feedback obj) {
-      return acao.save(obj);
+   
+   @GetMapping("/hello")
+   public String hello(){
+      return "Olá";
    }
-
    @GetMapping("/contador/total")
    public long numeroFeedbacks() {
       return acao.count();
@@ -67,12 +71,13 @@ public class ProductController {
    @GetMapping("/graph/rating/labels")
    public String[] graphRatingLabel() {
       SimpleDateFormat sdf = new SimpleDateFormat("MMM");
+]
 
       String[] labels = new String[6];
 
       for (int i = 0; i < 6; i++) {
          Calendar meses = Calendar.getInstance();
-         meses.add(Calendar.MONTH, -i + 1);
+         meses.add(Calendar.MONTH, -i);
          System.out.println(meses.get(Calendar.MONTH));
          String mes = sdf.format(meses.getTime());
          mes = mes.substring(0, 1).toUpperCase().concat(mes.substring(1));
@@ -137,12 +142,14 @@ public class ProductController {
       int[] datasddsS = new int[5];
       int[] datasddsG = new int[5];
 
+      
       int ndds = dds.get(Calendar.DAY_OF_WEEK);
-
+      System.out.println("ndds: " + ndds);
       if (ndds == 7 || ndds == 1) {
          for (int i = 0; i < 5; i++) {
 
             Calendar dds1 = Calendar.getInstance();
+
             int data;
             int wknd;
 
@@ -151,8 +158,9 @@ public class ProductController {
             } else {
                wknd = 2;
             }
-
+            dds1.add(Calendar.MONTH, 1);
             dds1.add(Calendar.DAY_OF_MONTH, (wknd + i) * -1);
+
             int ano = dds1.get(Calendar.YEAR) * 10000;
             int mes = dds1.get(Calendar.MONTH) * 100;
             int dia = dds1.get(Calendar.DAY_OF_MONTH);
@@ -169,6 +177,8 @@ public class ProductController {
          for (int i = 0; i < ndds - 1; i++) {
 
             Calendar dds1 = Calendar.getInstance();
+            dds1.add(Calendar.MONTH, 1);
+            dds1.add(Calendar.DAY_OF_MONTH, -1);
             int data;
 
             dds1.add(Calendar.DAY_OF_MONTH, -i);
@@ -179,9 +189,9 @@ public class ProductController {
             data = ano + mes + dia;
 
             System.out.println("Data " + data);
-            datasddsE[4 - i] = acao.countByDataFeedAndTipo(data, "Environment");
-            datasddsS[4 - i] = acao.countByDataFeedAndTipo(data, "Social");
-            datasddsG[4 - i] = acao.countByDataFeedAndTipo(data, "Governance");
+            datasddsE[i] = acao.countByDataFeedAndTipo(data, "Environment");
+            datasddsS[i] = acao.countByDataFeedAndTipo(data, "Social");
+            datasddsG[i] = acao.countByDataFeedAndTipo(data, "Governance");
          }
       }
 
@@ -221,8 +231,8 @@ public class ProductController {
    }
 
    @GetMapping("/find/top/datafeed")
-   public ArrayList<Feedback> getTopDataFeed() {
-      return acao.findTop6ByOrderByDataFeedDesc();
+   public List<Feedback> getTopDataFeed() {
+      return acao.findTop6OrderByDataCadastroDesc();
    }
 
    @GetMapping("/contador/ranking")
@@ -300,4 +310,10 @@ public class ProductController {
 
    }
 
+   @GetMapping("find/all/page={npage}")
+   public List<Feedback> getPagination(@PathVariable Integer npage) {
+      Sort sort = Sort.by("dataCadastro").descending();
+      Pageable pageable = PageRequest.of(npage, 10, sort);
+      return acao.findAll(pageable);
+   }
 }

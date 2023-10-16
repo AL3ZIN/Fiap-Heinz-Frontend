@@ -1,0 +1,30 @@
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuário</th>
+        <th>Tipo</th>
+        <th>Rating</th>
+        <th>Canal</th>
+        <th>Cadastro</th>
+        <th>Feedback</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listaFeedback">
+        <td>{{ item.id_feedback }}</td>
+        <td>{{ item.usuario }}</td>
+        <td>{{ item.tipo }}</td>
+        <td>{{ item.rating }}</td>
+        <td>{{ item.canal }}</td>
+        <td>{{ item.dataCadastro }}</td>
+        <td>{{ item.feedback }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="paginator">
+    <button (click)="previous()"> <fa-icon id="iconPs" [icon]="faChevronLeft"></fa-icon></button>
+    <div><p>{{pagenumber}}</p></div>
+    <button (click)="next()"> <fa-icon id="iconPs" [icon]="faChevronRight"></fa-icon></button>
+  </div>

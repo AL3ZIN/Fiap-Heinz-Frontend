@@ -1,0 +1,33 @@
+<aside [ngClass]="{'open': isSidebarOpen}" class="sidebar">
+    <div class="top">
+        <div class="logo" routerLink="/home">
+            <img src="/assets/feedbacks_imgs/logo.png" alt="">
+            <h1 class="primary">I<span class="danger">A</span><span class="success">B</span></h1>
+        </div>
+        <div class="close" id="close-btn">
+            <span class="material-symbols-sharp">close</span>
+        </div>
+    </div>
+    <div class="sidebar">
+        <a href="#" routerLink="home" >
+            <span><fa-icon [icon]="faChartPie"></fa-icon></span>
+            <h3>Dashboard</h3>
+        </a>
+        <a href="#" routerLink="/form" class="active">
+            <span><fa-icon [icon]="faChartLine"></fa-icon></span>
+            <h3>Cadastro</h3>
+        </a>
+        <a href="#">
+            <span><fa-icon [icon]="faEnvelope"></fa-icon></span>
+            <h3>Feedbacks</h3>
+        </a>
+        <a href="#">
+            <span><fa-icon [icon]="faGear"></fa-icon></span>
+            <h3>Settings</h3>
+        </a>
+        <a href="#">
+            <span><fa-icon [icon]="faRightFromBracket"></fa-icon></span>
+            <h3>Logout</h3>
+        </a>
+    </div>
+</aside>

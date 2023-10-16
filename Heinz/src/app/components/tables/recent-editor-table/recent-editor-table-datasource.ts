@@ -9,7 +9,7 @@ const EXAMPLE_DATA: RecentEditors[] = [
   {
     id_feedback: 5,
     usuario: 'ALEZIN',
-    data_cadastro: '22',
+    dataCadastro: '22',
     tipo: 'Environment',
     canal: 'youtube',
     rating: 'Positive',

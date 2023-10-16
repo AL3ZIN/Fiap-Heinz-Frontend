@@ -24,10 +24,12 @@ public class Feedback {
 
     @Column(name = "data_feedback")
     private int dataFeed;
-    private Timestamp data_cadastro;
+    
+    @Column(name = "data_cadastro")
+    private Timestamp dataCadastro;
 
     public Feedback(int id_feedback, String usuario, String tipo, String feedback, String rating,
-            String canal, int dataFeed, Timestamp data_cadastro) {
+            String canal, int dataFeed, Timestamp dataCadastro) {
         super();
         this.id_feedback = id_feedback;
         this.usuario = usuario;
@@ -36,7 +38,7 @@ public class Feedback {
         this.rating = rating;
         this.canal = canal;
         this.dataFeed = dataFeed;
-        this.data_cadastro = data_cadastro;
+        this.dataCadastro = dataCadastro;
     }
 
     public Feedback() {
@@ -99,19 +101,19 @@ public class Feedback {
         this.dataFeed =  Integer.parseInt(dataFeed.replace("-", ""));
     }
 
-    public Timestamp getData_cadastro() {
-        return data_cadastro;
+    public Timestamp getdataCadastro() {
+        return dataCadastro;
     }
 
-    public void setData_cadastro(Timestamp data_cadastro) {
-        this.data_cadastro = data_cadastro;
+    public void setdataCadastro(Timestamp dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     @Override
     final public String toString() {
         return "Feedback [id_feedback=" + id_feedback + ", usuario=" + usuario + ", tipo=" + tipo + ", feedback="
-                + feedback + ", rating=" + rating + ", canal=" + canal + ", dataFeed=" + dataFeed + ", data_cadastro="
-                + data_cadastro + "]";
+                + feedback + ", rating=" + rating + ", canal=" + canal + ", dataFeed=" + dataFeed + ", dataCadastro="
+                + dataCadastro + "]";
     }
 
 }

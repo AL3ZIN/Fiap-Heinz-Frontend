@@ -1,8 +1,10 @@
 package com.iab.api.repositorio;
 
 
-import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +26,10 @@ public interface Repositorio extends CrudRepository <Feedback,Integer>{
 
     int countByDataFeedAndTipo(int datadds, String tipo);
 
-    ArrayList<Feedback> findTop6ByOrderByDataFeedDesc();
+    @Query("SELECT f FROM Feedback f ORDER BY f.dataCadastro DESC LIMIT 6")
+    List<Feedback> findTop6OrderByDataCadastroDesc();
 
-   
+    List<Feedback> findAll(Pageable pageable);
+
+
 }

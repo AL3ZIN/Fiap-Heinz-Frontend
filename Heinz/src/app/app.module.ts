@@ -20,6 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatProgressBarModule} from '@angular/material/progress-bar'
 import { FormFeedbackComponent } from './components/forms/form-feedback/form-feedback.component';
 import { Sidebar2Component } from './components/pages_content/sidebar2/sidebar2.component';
+import { ConsultingTableComponent } from './components/tables/consulting-table/consulting-table.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { Sidebar2Component } from './components/pages_content/sidebar2/sidebar2.
     RecentEditorTableComponent,
     AppComponent,
     FormFeedbackComponent,
-    Sidebar2Component
+    Sidebar2Component,
+    ConsultingTableComponent
   ],
   imports: [
     BrowserModule,

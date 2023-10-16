@@ -1,7 +1,7 @@
 export interface RecentEditors {
   canal: string;
   dataFeed: number;
-  data_cadastro: string;
+  dataCadastro: string;
   feedback: string;
   id_feedback: number;
   rating: string;

@@ -1,0 +1,202 @@
+<section>
+    <div class="container">
+        <app-nav-bar></app-nav-bar>
+        <app-sidebar></app-sidebar>
+        <!------------------------- END OF ASIDE --------------------------->
+        <div class="main1">
+            <h2>ESG | Total Feedbacks</h2>
+            <p>Quantidade total de comentarios</p>
+            <div id="nfeed"></div>
+        </div>
+
+        <div class="main2">
+            <div class="top-main2">
+                <h2>ESG | Feedbacks</h2>
+                <p>Total de <b>50.4%</b> crescimento esse mês 😎!</p>
+            </div>
+            <div class="bottom-main2">
+                <div class="container-box">
+                    <div class="box box-e">
+                        <div><fa-icon [icon]="faLeaf"></fa-icon></div>
+                    </div>
+                    <div class="box-text">
+                        <p>Environment</p>
+                        <div id="nTipoEnvironment" class="ESGTypes">
+                            <!-- <span class="box-prcnt">30%</span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container-box">
+                    <div class="box box-s">
+                        <div><fa-icon [icon]="faUserGroup"></fa-icon></div>
+                    </div>
+                    <div class="box-text">
+                        <p>Social</p>
+                        <div id="nTipoSocial" class="ESGTypes">
+                            <!-- <span class="box-prcnt">22%</span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container-box">
+                    <div class="box box-g">
+                        <span><fa-icon [icon]="faBuilding"></fa-icon></span>
+                    </div>
+                    <div class="box-text">
+                        <p>Governance</p>
+                        <div id="nTipoGovernance" class="ESGTypes">
+                            <!-- <span class="box-prcnt">83%</span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main3">
+            <h2>ESG | Visão Semanal</h2>
+            <app-weekly-overview></app-weekly-overview>
+            <button>DETALHES</button>
+        </div>
+        <div class="main4">
+            <div>
+                <h2>NPS | Net Promoter Score</h2>
+                <p>Nota em relação a sentimentação dos clientes</p>
+
+            </div>
+            <div class="dstq-rating" id="NPS">
+
+                <fa-icon class="danger  displayn" id="iconNg" [icon]="faFaceAngry"></fa-icon>
+                <fa-icon class="warning displayn" id="iconNt" [icon]="faFaceMeh"></fa-icon>
+                <fa-icon class="success displayn" id="iconPs" [icon]="faFaceSmile"></fa-icon>
+
+            </div>
+            <div class="detail-rating">
+                <div class="c-rating">
+                    <div class="desc-rating">
+                        <div class="b-rating">
+                            <fa-icon class="success" [icon]="faFaceSmile"></fa-icon>
+                        </div>
+                        <div class="desc-r-box">
+                            <h3>Positive</h3>
+                            <p class="text-muted">Feedbacks bons</p>
+                        </div>
+                    </div>
+                    <div class="pb">
+                        <div class="nrating">
+                            <div>
+                                <div class="box-prcnt">{{percentPositive}}%</div>
+                            </div>
+                            <p>{{nRatingPositive}}</p>
+                        </div>
+                        <mat-progress-bar mode="determinate" [value]="percentPositive"
+                            class="progress-bar-positive"></mat-progress-bar>
+                    </div>
+                </div>
+                <div class="c-rating">
+                    <div class="desc-rating">
+                        <div class="b-rating">
+                            <fa-icon class="warning" id="iconN" [icon]="faFaceMeh"></fa-icon>
+                        </div>
+                        <div class="desc-r-box">
+                            <h3>Neutral</h3>
+                            <p class="text-muted">Feedbacks neutros</p>
+                        </div>
+                    </div>
+                    <div class="pb">
+                        <div class="nrating">
+                            <div>
+                                <div class="box-prcnt">{{percentNeutral}}%</div>
+                            </div>
+                            <p>{{nRatingNeutral}}</p>
+                        </div>
+                        <mat-progress-bar mode="determinate" [value]="percentNeutral"
+                            class="progress-bar-neutral"></mat-progress-bar>
+                    </div>
+                </div>
+                <div class="c-rating">
+                    <div class="desc-rating">
+                        <div class="b-rating">
+                            <fa-icon class="danger" [icon]="faFaceAngry"></fa-icon>
+                        </div>
+                        <div class="desc-r-box">
+                            <h3>Negative</h3>
+                            <p class="text-muted"> Feedbacks ruins</p>
+                        </div>
+                    </div>
+                    <div class="pb">
+                        <div class="nrating">
+                            <div>
+                                <div class="box-prcnt">{{percentNegative}}%</div>
+                            </div>
+                            <p>{{nRatingNegative}}</p>
+                        </div>
+                        <mat-progress-bar mode="determinate" [value]="percentNegative"
+                            class="progress-bar-negative"></mat-progress-bar>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main5">
+            <h2>Rating | Visão Mensal</h2>
+            <app-line-graph-rating></app-line-graph-rating>
+            <div class="coment-rating">
+                <h1>35%</h1>
+                <p>Os feedbacks positivos aumentarem 35.5% comparado ao mes passado 😎!</p>
+            </div>
+        </div>
+        <div class="main6">
+            <h2>Social Media | Ranking</h2>
+            <div class="ranking">
+                <div class="ranking-box">
+                    <div class="social-media-box" id="ranking1">
+                        <fa-icon class="facebook displayn" [icon]="faFacebook"></fa-icon>
+                        <fa-icon class="twitter displayn" [icon]="faTwitter"></fa-icon>
+                        <fa-icon class="instagram displayn" [icon]="faInstagram"></fa-icon>
+                        <div class="sm-text">
+                            <h3>{{dataPrimary}}</h3>
+                            <p>{{namePrimary}}</p>
+                        </div>
+                    </div>
+                    <div class="sm-nclient">
+                        <h3>476</h3>
+                        <p>clientes</p>
+                    </div>
+                </div>
+                <div class="ranking-box">
+                    <div class="social-media-box" id="ranking2">
+
+                        <fa-icon class="facebook displayn" [icon]="faFacebook"></fa-icon>
+                        <fa-icon class="twitter displayn" [icon]="faTwitter"></fa-icon>
+                        <fa-icon class="instagram displayn" [icon]="faInstagram"></fa-icon>
+
+                        <div class="sm-text">
+                            <h3>{{dataSecondary}}</h3>
+                            <p>{{nameSecondary}}</p>
+                        </div>
+                    </div>
+                    <div class="sm-nclient">
+                        <h3>202</h3>
+                        <p>clientes</p>
+                    </div>
+                </div>
+                <div class="ranking-box">
+                    <div class="social-media-box" id="ranking3">
+
+                        <fa-icon class="facebook displayn" [icon]="faFacebook"></fa-icon>
+                        <fa-icon class="twitter displayn" [icon]="faTwitter"></fa-icon>
+                        <fa-icon class="instagram displayn" [icon]="faInstagram"></fa-icon>
+
+                        <div class="sm-text">
+                            <h3>{{dataTerciary}}</h3>
+                            <p>{{nameTerciary}}</p>
+                        </div>
+                    </div>
+                    <div class="sm-nclient">
+                        <h3>178</h3>
+                        <p>clientes</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <app-recent-editor-table></app-recent-editor-table>
+    </div>
+</section>

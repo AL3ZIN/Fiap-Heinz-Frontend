@@ -3,11 +3,12 @@
         <app-nav-bar></app-nav-bar>
         <app-sidebar2></app-sidebar2>
         <div class="row">
-            <div class="col-md-12">
-                <form method="post" #frm="ngForm">
-                    <h1> Cadastro </h1>
-
-                    <fieldset>
+            <div class="show-form" (click)="toggleForm()" [ngClass]="showForm">
+                <h1>Cadastro</h1>
+            </div>
+            <form method="post" #frm="ngForm" [ngClass]="{ 'active': isFormActive }">
+                <div class="form-control">
+                    <div class="left-form">
                         <label for="usuario">Usuario:</label>
                         <input type="text" id="usuario" name="usuario" [(ngModel)]="usuario">
 
@@ -20,7 +21,8 @@
 
                         <label for="feedback">Feedback:</label>
                         <textarea id="feedback" name="feedback" [(ngModel)]="feedback"></textarea>
-
+                    </div>
+                    <div class="right-form">
                         <label for="job">Rating:</label>
                         <select id="job" name="user_job" [(ngModel)]="rating">
                             <option value="Positive">Positive</option>
@@ -37,13 +39,21 @@
 
                         <label for="data_cadastro">Data do Feedback:</label>
                         <input type="date" id="data_feedback" name="data_feedback" [(ngModel)]="data_feedback">
+                        <button type="submit" (click)="cadastrar()">Cadastrar</button>
+                    </div>
 
-                    </fieldset>
+                </div>
 
-                    <button type="submit" (click)="cadastrar()">Sign Up</button>
-
-                </form>
+            </form>
+        </div>
+        <div class="consulta">
+            <!-- <div class="show-table" (click)="toggleTable()" [ngClass]="showTable">
+                <h1>Consulta</h1>
+            </div> -->
+            <div class="tablediv" [ngClass]="{ 'active': isTableActive }">
+                <app-consulting-table></app-consulting-table>
             </div>
+
         </div>
     </div>
 </section>
