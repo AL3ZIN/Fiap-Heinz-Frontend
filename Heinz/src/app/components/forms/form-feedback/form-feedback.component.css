@@ -3,21 +3,22 @@ section {
   height: 100vh;
   font-family: poppins, sans-serif;
   background-color: var(--color-background);
-  user-select: none;
-  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 1.4rem 1.4rem 1.4rem 0rem;
 }
 
 .container {
   display: grid;
   width: 96%;
-  margin: 1.4rem auto 1.4rem 0rem;
+
   gap: 1.8rem;
   grid-template-columns: 0.4fr 1fr 1fr 1fr;
-  grid-template-rows: 4vh auto auto;
+  grid-template-rows: 4vh auto auto auto;
   grid-template-areas:
-    "aside   nb       nb      nb"
-    "aside   form     form    form"
-    "aside   ctable   ctable  ctable";
+    "aside   nb         nb        nb"
+    "aside   fd         fd        fd"
+    "aside   consulta  consulta  consulta"
+    "aside   ctable     ctable    ctable";
   color: var(--color-dark);
 }
 app-sidebar {
@@ -26,153 +27,162 @@ app-sidebar {
 app-nav-bar {
   grid-area: nb;
 }
-.row {
-  grid-area: form;
+
+/* =======================================CADASTRO=========================================*/
+
+.container__cadastro {
+  grid-area: fd;
+  width: 100%;
 }
-.consulta{
-  grid-area: ctable;
+.container__cadastro__toggle {
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+
 }
 
-form {
-  /* box-shadow: var(--box-shadow); */
-  margin: 0px auto;
-  background: var(--color-white);
-  color: var(--color-dark);
-  border-radius: 0 0 var(--border-radius-1) var(--border-radius-1);
-  width: 100%;
-  overflow: hidden;
-  transition: .5s ease-in-out;
-  max-height: 0;
-}
-.form-control{
-  padding: 30px 20px;
-}
-.show-form{
-  padding: 10px 40px;
+.container__cadastro__toggle__label {
   background-color: var(--color-white);
-  border-radius: var(--border-radius-1);
-  transition: .5s ease-in-out;
-  cursor: pointer;
-}
-.show-table{
-  padding: 10px 40px;
-  background-color: var(--color-light);
-  border-radius: var(--border-radius-1);
-  transition: .5s ease-in-out;
-  cursor: pointer;
-}
-form.active{
-  max-height: 100%;
-  /* transition: .5s ease-in; */
-}
-.tablediv{
-  max-height: 0;
-  overflow: hidden;
-  transition: .5s ease-in-out;
-}
-.tablediv.active{
-  max-height: 100%;
-  transition: .5s ease-in-out;
-}
-.show-form.active {
-  border-radius: var(--border-radius-1) var(--border-radius-1) 0 0 ;
-  transition: .5s ease-in-out
-}
-.show-table.active {
-  border-radius: var(--border-radius-1) var(--border-radius-1) 0 0 ;
-  transition: .5s ease-in-out
-}
-
-.form-control {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.left-form {
-  width: 45%;
-}
-.right-form {
-  width: 40%;
-}
-
-
-
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="datetime"],
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="tel"],
-input[type="time"],
-input[type="url"],
-textarea,
-select {
-  background: var(--color-light);
-  border: none;
-  font-size: 16px;
-  height: auto;
-  padding: 5px;
-  width: 100%;
-  background-color: #e8eeef;
   color: var(--color-dark);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 30px;
-}
-
-button {
-  padding: 10px 40px;
-  color: #fff;
-  background-color: var(--color-primary);
-  font-size: 18px;
-  text-align: center;
-  font-style: normal;
-  border-radius: 5px;
-  margin-top: 0 auto;
-  width: 100%;
-  border: 1px solid var(--color-primary);
-  border-width: 1px 1px 3px;
-  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
-  margin-bottom: 10px;
+  padding: .5rem  1rem;
   cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--box-shadow);
+}
+input[type="radio"][value="pesquisar"]+ .container__cadastro__toggle__label{
+  border-radius: var(--border-radius-1) 0 0 var(--border-radius-1);
+}
+input[type="radio"][value="cadastrar"] + .container__cadastro__toggle__label{
+  border-radius: 0 var(--border-radius-1) var(--border-radius-1) 0;
+}
+input[type="radio"]:checked + .container__cadastro__toggle__label {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transition: all 0.3s;
+
 }
 
 
-form input{
-  background-color: var(--color-light);
+/* Estilos adicionais para os rótulos quando não marcados */
+
+.container__cadastro__input {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
 }
-select {
-  background-color: var(--color-light);
+.container__cadastro__input input::placeholder {
+  color: #737fec93;
 }
-textarea {
-  background-color: var(--color-light);
-  height: 115px;
+.container__cadastro__input input {
+  width: 91.6%;
+  border-radius: var(--border-radius-1) 0 0 var(--border-radius-1);
+  background: #ddd;
+  padding: 1rem;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--color-primary);
+  background-color: transparent;
+  border: 3px var(--color-primary) solid;
 }
-legend {
-  font-size: 1.4em;
-  margin-bottom: 10px;
+.container__cadastro__input button {
+  background-color: var(--color-primary);
+  width: 8%;
+  border-radius: 0 var(--border-radius-1) var(--border-radius-1) 0;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
+.container__cadastro__input button:hover {
+  background-color: var(--color-primary-hover);
+}
+/* =======================================CADASTRO=========================================*/
+/* =======================================CONSULTA=========================================*/
+.container__consulta{
+display: grid;
+width: 90%;
+grid-template-columns:1fr 1fr 1fr;
+gap: 1.8rem ;
+  grid-area: consulta;
+}
+.container__consulta__postagem{
+  background-color: var(--color-white);
+  padding: var(--card-padding);
+  height: 200px;
+  border-radius: var(--border-radius-1);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container__consulta__postagem__top__titulo{
+  display: flex;
+  justify-content: space-between;
+ 
+}
+.container__consulta__postagem__top__titulo h1>fa-icon{
+  color: rgb(255,103,141);
+  margin-left: 1rem;
+}
+.container__consulta__postagem__top__titulo__icons{
+  display: flex;
+  flex-direction: row; 
+  align-items: flex-start; 
 }
 
-label.light {
-  font-weight: 300;
-  display: inline;
+.icon--bg{
+  padding: 1px 5px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: .1s ease-in-out;
+  margin-left: .7rem;
+
+}
+.icon--bg--primary{
+  color: var(--color-blue);
+}
+.icon--bg--danger{
+  color: var(--color-danger);
+}
+.icon--bg--primary:hover{
+background-color: var(--color-blue-fade);
+}
+.icon--bg--danger:hover{
+  background-color: var(--color-danger-fade);
+}
+.container__consulta__postagem__top_descricao{
+ white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30ch;
 }
 
-.number {
-  color: #fff;
-  height: 30px;
-  width: 30px;
-  display: inline-block;
-  font-size: 0.8em;
-  margin-right: 4px;
-  line-height: 30px;
-  text-align: center;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-  border-radius: 100%;
+.container__consulta__postagem_bottom{
+  display: flex;
+  justify-content: space-between;
 }
+.container__consulta__postagem_bottom a{
+  color: var(--color-blue);
+  text-decoration: underline;
+}
+.container__consulta__postagem_bottom__btn{
+  display: flex;
+  align-items: flex-end;
+}
+.container__consulta__postagem_bottom__btn button{
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  padding: .5rem .7rem;
+  border-radius: var(--border-radius-1);
+  cursor: pointer;
+  font-weight: 500;
+  transition: .5s;
+}
+.container__consulta__postagem_bottom__btn button:hover{
+  background-color: var(--color-primary-hover);
+  
+}
+/* =======================================CONSULTA=========================================*/

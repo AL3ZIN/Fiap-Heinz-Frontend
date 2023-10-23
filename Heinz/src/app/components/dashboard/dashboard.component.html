@@ -6,7 +6,9 @@
         <div class="main1">
             <h2>ESG | Total Feedbacks</h2>
             <p>Quantidade total de comentarios</p>
-            <div id="nfeed"></div>
+            <div id="nfeed">
+                <h1>{{contador.all}}</h1>
+            </div>
         </div>
 
         <div class="main2">
@@ -22,6 +24,7 @@
                     <div class="box-text">
                         <p>Environment</p>
                         <div id="nTipoEnvironment" class="ESGTypes">
+                            <h2>{{ contador.tipo.environment }}</h2>
                             <!-- <span class="box-prcnt">30%</span> -->
                         </div>
                     </div>
@@ -33,6 +36,7 @@
                     <div class="box-text">
                         <p>Social</p>
                         <div id="nTipoSocial" class="ESGTypes">
+                            <h2>{{ contador.tipo.social }}</h2>
                             <!-- <span class="box-prcnt">22%</span> -->
                         </div>
                     </div>
@@ -44,6 +48,7 @@
                     <div class="box-text">
                         <p>Governance</p>
                         <div id="nTipoGovernance" class="ESGTypes">
+                            <h2>{{ contador.tipo.governance }}</h2>
                             <!-- <span class="box-prcnt">83%</span> -->
                         </div>
                     </div>
@@ -62,7 +67,7 @@
 
             </div>
             <div class="dstq-rating" id="NPS">
-
+                <h2>{{contador.nps}}</h2>
                 <fa-icon class="danger  displayn" id="iconNg" [icon]="faFaceAngry"></fa-icon>
                 <fa-icon class="warning displayn" id="iconNt" [icon]="faFaceMeh"></fa-icon>
                 <fa-icon class="success displayn" id="iconPs" [icon]="faFaceSmile"></fa-icon>
@@ -84,10 +89,10 @@
                             <div>
                                 <div class="box-prcnt">{{percentPositive}}%</div>
                             </div>
-                            <p>{{nRatingPositive}}</p>
+                            <!-- <p>{{}}</p> -->
                         </div>
-                        <mat-progress-bar mode="determinate" [value]="percentPositive"
-                            class="progress-bar-positive"></mat-progress-bar>
+                        <!-- <mat-progress-bar mode="determinate" [value]="percentPositive"
+                            class="progress-bar-positive"></mat-progress-bar> -->
                     </div>
                 </div>
                 <div class="c-rating">
@@ -107,8 +112,8 @@
                             </div>
                             <p>{{nRatingNeutral}}</p>
                         </div>
-                        <mat-progress-bar mode="determinate" [value]="percentNeutral"
-                            class="progress-bar-neutral"></mat-progress-bar>
+                        <!-- <mat-progress-bar mode="determinate" [value]="percentNeutral"
+                            class="progress-bar-neutral"></mat-progress-bar> -->
                     </div>
                 </div>
                 <div class="c-rating">
@@ -128,8 +133,8 @@
                             </div>
                             <p>{{nRatingNegative}}</p>
                         </div>
-                        <mat-progress-bar mode="determinate" [value]="percentNegative"
-                            class="progress-bar-negative"></mat-progress-bar>
+                        <!-- <mat-progress-bar mode="determinate" [value]="percentNegative"
+                            class="progress-bar-negative"></mat-progress-bar> -->
                     </div>
                 </div>
             </div>

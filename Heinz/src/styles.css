@@ -13,9 +13,10 @@
   font-family: poppins, sans-serif;
 }
 
+
 :root {
   --color-primary: #7380ec;
-  --color-primary-hover: #919bf0;
+  --color-primary-hover: rgb(90, 105, 235);
   --color-danger: #ff7782;
   --color-success: #41f1b6;
   --color-warning: #ffbb55;
@@ -27,17 +28,20 @@
   --color-primary-variant: #111e88;
   --color-dark-variant: #677483;
   --color-background: #f4f5fa;
+  --color-blue: #007BFF;
 
   --color-success-fade: #41f1b670;
   --color-danger-fade: #ff77828f;
   --color-warning-fade: #ffbb557c;
+  --color-primary-fade: #737fec79;
+  --color-blue-fade: #007bff67;
 
   --card-border-radius: 0.5rem;
   --border-radius-1: 0.4rem;
   --border-radius-2: 0.8rem;
   --border-radius-3: 1.2rem;
 
-  --card-padding: 1.8rem;
+  --card-padding: 1.5rem;
   --padding-1: 1.2rem;
 
   --box-shadow: var(--color-light) 0px 2px 10px 0px;
@@ -61,8 +65,8 @@
 } */
 
 /* h2 {
-  font-weight: 500;
-  font-size: 1.2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
 } */
 
 h3 {

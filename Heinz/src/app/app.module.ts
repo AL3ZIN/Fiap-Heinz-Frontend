@@ -14,10 +14,6 @@ import { WeeklyOverviewComponent } from './components/charts/weekly-overview/wee
 import { LineGraphRatingComponent } from './components/charts/line-graph-rating/line-graph-rating.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecentEditorTableComponent } from './components/tables/recent-editor-table/recent-editor-table.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatProgressBarModule} from '@angular/material/progress-bar'
 import { FormFeedbackComponent } from './components/forms/form-feedback/form-feedback.component';
 import { Sidebar2Component } from './components/pages_content/sidebar2/sidebar2.component';
 import { ConsultingTableComponent } from './components/tables/consulting-table/consulting-table.component';
@@ -43,12 +39,8 @@ import { ConsultingTableComponent } from './components/tables/consulting-table/c
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
     HttpClientModule,
     FormsModule,
-    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

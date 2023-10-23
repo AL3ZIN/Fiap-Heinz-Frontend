@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { format } from 'date-fns';
 import { AlertService } from 'src/app/services/alert.service';
 import { Router } from '@angular/router';
-
+import { faRefresh, faTrash, faCircle} from '@fortawesome/free-solid-svg-icons';
+import {faFacebook, faTwitter, faInstagram,} from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-form-feedback',
   templateUrl: './form-feedback.component.html',
@@ -18,22 +19,27 @@ export class FormFeedbackComponent {
   data_feedback: string = '';
   dataCadastro: string = '';
 
+  faRefresh = faRefresh;
+  faTrash = faTrash;
+  faInstagram = faInstagram;
+  faCircle = faCircle;
+
   constructor(
     private http: HttpClient,
     private alert: AlertService,
     private router: Router
   ) {}
   isFormActive = true; // Variável para rastrear o estado do formulário
-  isTableActive = true; 
+  isTableActive = true;
   showForm = ''; // Classe CSS para controlar o border-radius
-  showTable= '';
+  showTable = '';
 
   toggleForm() {
     this.isFormActive = !this.isFormActive; // Alterna o estado do formulário
     this.showForm = this.isFormActive ? 'active' : '';
   }
-  
-  toggleTable(){
+
+  toggleTable() {
     this.isTableActive = !this.isTableActive; // Alterna o estado do formulário
     this.showTable = this.isTableActive ? 'active' : '';
   }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RecentEditors } from './models/recentEditors';
 import { ConsultingTable } from './models/consultingTable';
 import { ConsultingTableComponent } from './components/tables/consulting-table/consulting-table.component';
+import { Contador } from './models/contador';
 
 @Injectable({
   providedIn: 'root',
@@ -12,37 +13,11 @@ export class AppService {
   private apiUrl = 'http://localhost:8080';
   constructor(private http: HttpClient) {}
 
-  getTotalFeedbacks() {
-    return this.http.get('http://localhost:8080/contador/total');
+   contador(): Observable<Contador> {
+    return this.http.get<Contador>('http://localhost:8080/api/comentario/contador');
   }
 
-  getNumTipoEnvironment() {
-    return this.http.get(
-      'http://localhost:8080/contador/tipofeedback/Environment'
-    );
-  }
-
-  getNumTipoSocial() {
-    return this.http.get('http://localhost:8080/contador/tipofeedback/Social');
-  }
-
-  getNumTipoGovernance() {
-    return this.http.get(
-      'http://localhost:8080/contador/tipofeedback/Governance'
-    );
-  }
-
-  getNumRating(): Observable<Array<number>> {
-    return this.http.get<Array<number>>(
-      'http://localhost:8080/contador/rating'
-    );
-  }
-
-  getNotaNPS() {
-    return this.http.get('http://localhost:8080/math/nps');
-  }
-
-  getGraphRatingLabels() {
+GraphRatingLabels() {
     return this.http.get<string[]>('http://localhost:8080/graph/rating/labels');
   }
   getGraphRatingData() {
