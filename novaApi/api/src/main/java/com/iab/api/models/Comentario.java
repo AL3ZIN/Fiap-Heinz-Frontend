@@ -48,10 +48,6 @@ public class Comentario {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataFeed;
 
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataCadastro;
-
     @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;

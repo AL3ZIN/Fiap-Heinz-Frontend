@@ -27,7 +27,7 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
             "COUNT(c) AS qtdComentarios " +
             "FROM Comentario c " +
             "JOIN c.perfil p " +
-            "GROUP BY p.canal ORDER BY qtdComentarios")
+            "GROUP BY p.canal ORDER BY p.dataPostagem")
     List<RankingProjection> findRankingCanais();
-
+    
 }

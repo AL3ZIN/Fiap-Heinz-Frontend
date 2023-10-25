@@ -1,70 +1,81 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { format } from 'date-fns';
 import { AlertService } from 'src/app/services/alert.service';
 import { Router } from '@angular/router';
-import { faRefresh, faTrash, faCircle} from '@fortawesome/free-solid-svg-icons';
-import {faFacebook, faTwitter, faInstagram,} from '@fortawesome/free-brands-svg-icons';
+import { Consulta } from 'src/app/models/consulta';
+import { getFeedbacksByPostURL } from 'src/app/modules/TwitterScrap/twitterScrap';
+import {
+  faRefresh,
+  faTrash,
+  faCircle,
+  faFaceSmile,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from '@fortawesome/free-brands-svg-icons';
+import { AppService } from 'src/app/app.service';
+import { async } from 'rxjs';
 @Component({
   selector: 'app-form-feedback',
   templateUrl: './form-feedback.component.html',
   styleUrls: ['./form-feedback.component.css'],
 })
-export class FormFeedbackComponent {
-  usuario: string = '';
-  tipo_feedback: string = '';
-  feedback: string = '';
-  rating: string = '';
-  canal: string = '';
-  data_feedback: string = '';
-  dataCadastro: string = '';
+export class FormFeedbackComponent implements OnInit {
+  consulta: Array<Consulta> = [];
 
   faRefresh = faRefresh;
   faTrash = faTrash;
   faInstagram = faInstagram;
   faCircle = faCircle;
+  faFaceSmile = faFaceSmile;
 
-  constructor(
-    private http: HttpClient,
-    private alert: AlertService,
-    private router: Router
-  ) {}
-  isFormActive = true; // Variável para rastrear o estado do formulário
-  isTableActive = true;
-  showForm = ''; // Classe CSS para controlar o border-radius
-  showTable = '';
-
-  toggleForm() {
-    this.isFormActive = !this.isFormActive; // Alterna o estado do formulário
-    this.showForm = this.isFormActive ? 'active' : '';
+excluirPostagem(id: number): void{
+    this.service.deletePostagem(id).subscribe(() =>{
+      this.consulta = this.consulta.filter((consulta) => consulta.id !== id);
+    })
   }
 
-  toggleTable() {
-    this.isTableActive = !this.isTableActive; // Alterna o estado do formulário
-    this.showTable = this.isTableActive ? 'active' : '';
+  radioValue: string = 'pesquisar'; // Inicialmente, definido como 'pesquisar'
+  inputValue!: string;
+
+  // Função para alterar o modo com base na seleção do usuário
+   async handleSendClick() {
+    if (this.radioValue === 'pesquisar') {
+      await this.pesquisar();
+    } else if (this.radioValue === 'cadastrar') {
+      await this.cadastrar(this.inputValue);
+    } else {
+    }
+  }
+cadastrar(url : string): void {
+    getFeedbacksByPostURL(url);
+    console.log('Modo: Cadastrar');
+    console.log(this.inputValue)
   }
 
-  cadastrar() {
-    const dataCadastro = new Date();
-    const timestampDataCadastro = format(dataCadastro, "yyyy-MM-dd'T'HH:mm:ss");
-
-    let BodyData = {
-      usuario: this.usuario,
-      tipo: this.tipo_feedback,
-      feedback: this.feedback,
-      rating: this.rating,
-      canal: this.canal,
-      dataFeed: this.data_feedback,
-      dataCadastro: timestampDataCadastro,
-    };
-
-    this.http
-      .post('http://localhost:8080/cadastro', BodyData, {
-        responseType: 'text',
-      })
-      .subscribe((resultData: any) => {
-        this.alert.success('Feedback Cadastrado com Sucesso!');
-        // this.router.navigate(['/home']);
-      });
+  pesquisar(): void {
+    console.log('Modo: Pesquisar');
   }
+  constructor(private service: AppService) {}
+
+  ngOnInit(): void {
+    this.service.consulta().subscribe((resultData: Array<Consulta>) => {
+      this.consulta = resultData.map((item) => ({
+        ...item,
+        dataCadastro: this.formatData(item.dataCadastro),
+      }));
+    });
+  }
+
+  private formatData(data: string): string {
+    const date = new Date(data);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+  
 }

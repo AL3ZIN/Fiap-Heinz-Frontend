@@ -4,43 +4,43 @@
         <app-sidebar2></app-sidebar2>
         <div class="container__cadastro">
             <nav class="container__cadastro__toggle">
-                <input type="radio" name="example" value="pesquisar" checked id="radio-input-pesquisar">
+                <input type="radio" name="example" value="pesquisar" [(ngModel)]="radioValue" checked id="radio-input-pesquisar">
                 <label for="radio-input-pesquisar" class="container__cadastro__toggle__label">Pesquisar</label>
 
-                <input type="radio" name="example" value="cadastrar" id="radio-input-cadastrar">
+                <input type="radio" name="example" value="cadastrar" [(ngModel)]="radioValue" id="radio-input-cadastrar">
                 <label for="radio-input-cadastrar" class="container__cadastro__toggle__label">Cadastrar</label>
             </nav>
 
             <div class="container__cadastro__input">
-                <input id="text" type="text" placeholder="Insira a URL da postagem" required>
-                <button>Send</button>
+                <input id="text" type="text" [(ngModel)]="inputValue" placeholder="Insira a URL da postagem" required>
+                <button (click)="handleSendClick()" >Send</button>
             </div>
         </div>
         <!--==========================================Fim Input Cadastro/Pesquisa ================================================-->
         <div class="container__consulta">
-            <div class="container__consulta__postagem">
+            <div class="container__consulta__postagem " *ngFor="let item of consulta">
 
                 <div class="container__consulta__postagem_top">
                     <div class="container__consulta__postagem__top__titulo">
-                        <h1>@heinz_br<fa-icon class="instagram" [icon]="faInstagram"></fa-icon></h1>
-
+                        <h1>@{{item.perfil}} <fa-icon class="instagram" [icon]="faInstagram"></fa-icon></h1>
                         <div class="container__consulta__postagem__top__titulo__icons">
                             <fa-icon class="icon--bg icon--bg--primary" id="iconN" [icon]="faRefresh"></fa-icon>
-                            <fa-icon class="icon--bg icon--bg--danger" id="iconN" [icon]="faTrash"></fa-icon>
+                            <fa-icon (click)="excluirPostagem(item.id)" class="icon--bg icon--bg--danger" id="iconN" [icon]="faTrash"></fa-icon>
                         </div>
 
                     </div>
                     <p class="container__consulta__postagem__top_descricao">
-                        Não é possível que só eu faça isso! Comenta aí se você também ama um sorvete com meu Ketchup.
-                        #NinguémFazMelhor
+                        {{item.legenda}}
                     </p>
                 </div>
 
-                <div class="container__consulta__postagem_bottom">
+                <div class="container__consulta__postagem_bottom" >
                     <ul>
-                        <li><a href="https://www.instagram.com/p/CylYx3NrUll/">Link</a></li>
-                        <li>Feedbacks: 47</li>
-                        <li>Last updated: 23/10/2023</li>
+                        <li><a href={{item.postagem}}>Link</a></li>
+                        <li>Feedbacks: {{item.numeroComentarios}}</li>
+                        <li>NPS: <span class="success">90 <fa-icon class="success" id="iconPs"
+                                    [icon]="faFaceSmile"></fa-icon></span></li>
+                        <li>Last updated: {{item.dataCadastro}}</li>
                     </ul>
                     <div class="container__consulta__postagem_bottom__btn">
                         <button>Detalhes</button>
@@ -48,10 +48,6 @@
                 </div>
 
             </div>
-            <div class="container__consulta__postagem"></div>
-            <div class="container__consulta__postagem"></div>
-            <div class="container__consulta__postagem"></div>
-            <div class="container__consulta__postagem"></div>
         </div>
         <!--==========================================Fim Consultas ================================================-->
     </div>

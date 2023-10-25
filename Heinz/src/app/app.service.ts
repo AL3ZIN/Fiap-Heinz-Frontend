@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RecentEditors } from './models/recentEditors';
 import { ConsultingTable } from './models/consultingTable';
 import { ConsultingTableComponent } from './components/tables/consulting-table/consulting-table.component';
+import { Consulta } from './models/consulta';
 import { Contador } from './models/contador';
 
 @Injectable({
@@ -13,11 +14,23 @@ export class AppService {
   private apiUrl = 'http://localhost:8080';
   constructor(private http: HttpClient) {}
 
-   contador(): Observable<Contador> {
-    return this.http.get<Contador>('http://localhost:8080/api/comentario/contador');
+  contador(): Observable<Contador> {
+    return this.http.get<Contador>(
+      'http://localhost:8080/api/comentario/contador'
+    );
   }
 
-GraphRatingLabels() {
+  consulta(): Observable<Array<Consulta>> {
+    return this.http.get<Array<Consulta>>(
+      'http://localhost:8080/api/postagem/consulta'
+    );
+  }
+
+  deletePostagem(id: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:8080/api/postagem/excluir/${id}`);
+  }
+
+  GraphRatingLabels() {
     return this.http.get<string[]>('http://localhost:8080/graph/rating/labels');
   }
   getGraphRatingData() {

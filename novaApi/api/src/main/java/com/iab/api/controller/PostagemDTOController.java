@@ -6,10 +6,12 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.iab.api.dtos.ConsultaDTO;
 import com.iab.api.dtos.PostagemDTO;
 import com.iab.api.dtos.RankingDTO;
 import com.iab.api.models.Comentario;
 import com.iab.api.models.Perfil;
+import com.iab.api.projections.ConsultaProjection;
 import com.iab.api.projections.RankingProjection;
 import com.iab.api.repositories.ComentarioRepository;
 import com.iab.api.repositories.PerfilRepository;
@@ -32,10 +34,13 @@ public class PostagemDTOController {
     public PostagemDTO savePostagemDTO(@RequestBody PostagemDTO PostagemDTO) {
 
         Perfil perfil = new Perfil();
-        perfil.setNome(PostagemDTO.getPerfil());
+        perfil.setPerfil(PostagemDTO.getPerfil());
         perfil.setEmbedLink(PostagemDTO.getEmbedLink());
         perfil.setPostagem(PostagemDTO.getPostagem());
+        perfil.setLegenda(PostagemDTO.getLegenda());
         perfil.setCanal(PostagemDTO.getCanal());
+        perfil.setDataPostagem(PostagemDTO.getDataPostagem());
+        perfil.setDataCadastro(PostagemDTO.getDataCadastro());
         perfil = perfilRepository.save(perfil);
 
         for (Comentario comentario : PostagemDTO.getComentarios()) {
@@ -90,6 +95,24 @@ public class PostagemDTOController {
             .collect(Collectors.toList());
     return rankingDTOList;
     }
-    
 
+    @GetMapping("/consulta")
+    public List<ConsultaDTO> getConsultaList() {
+        List<ConsultaProjection> consultaList = perfilRepository.getConsulta();
+
+        List<ConsultaDTO> consultaDTOList = consultaList.stream()
+            .map(result -> new ConsultaDTO(
+                result.getId(),
+                result.getPerfil(), // Acesse o perfil a partir da projeção
+                result.getPostagem(),
+                result.getLegenda(),
+                result.getCanal(),
+                result.getNumeroComentarios(),
+                result.getDataCadastro()
+            ))
+            .collect(Collectors.toList());
+
+        return consultaDTOList;
+    }
+    
 }
