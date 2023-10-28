@@ -9,6 +9,26 @@
             <h1>ESG | NPS</h1>
             <canvas #chartCanvas></canvas>
         </div>
+        <div class="comentarios-container">
+            <div class="comentarios-container-titulo">
+                <h1>Comentarios</h1>
+            </div>
+            <div class="comentarios-scrollable">
+                <div *ngFor="let comentario of comentarioListPR?.content" class="comentario-card">
+                    <h3>{{ comentario.usuario }}</h3>
+                    <p>{{ comentario.comentario }}</p>
+                    <div class="rating">
+                        <span><fa-icon [icon]="faHeart"></fa-icon> {{ comentario.curtidas }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination-controls">
+                <div class="pagination-buttons">
+                <button (click)="prevPage()" [disabled]="page === 0">Anterior</button>
+                <button (click)="nextPage()" [disabled]="page === totalPages - 1">Próximo</button>
+            </div>
+            </div>
+        </div>
         <div class="container__analise-comentarios">
             <div class="container__scrollable-list">
                 <h1>TOP 20 Palavras mais usadas</h1>

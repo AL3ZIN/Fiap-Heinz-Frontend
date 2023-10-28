@@ -5,12 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.iab.api.dtos.ComentarioListDTO;
 import com.iab.api.dtos.ComentariosAggregateDTO;
 import com.iab.api.dtos.ContadorDTO;
 import com.iab.api.dtos.ContadorRatingDTO;
@@ -22,9 +26,11 @@ import com.iab.api.dtos.WordCloudDTO;
 import com.iab.api.enums.Rating;
 import com.iab.api.enums.Tipo;
 import com.iab.api.repositories.ComentarioRepository;
+import com.iab.api.services.ComentarioListService;
 import com.iab.api.services.ComentarioService;
 import com.iab.api.services.DataMonthlyService;
 import com.iab.api.services.DataWeeklyService;
+import org.springframework.data.domain.Sort;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -131,11 +137,20 @@ public class ComentarioController {
         return ResponseEntity.ok(overview);
     }
 
-     @Autowired
+    @Autowired
     private ComentarioService comentarioService;
 
-    @GetMapping("/aggregateData/{perfilId}")
+    @GetMapping("/aggregatedata/{perfilId}")
     public ComentariosAggregateDTO getAggregateData(@PathVariable Long perfilId) {
         return comentarioService.getAggregateData(perfilId);
+    }
+
+    @Autowired
+    private ComentarioListService comentarioListService;
+
+    @GetMapping("/{idPerfil}")
+    public Page<ComentarioListDTO> getComentariosByPerfilId(@PathVariable int idPerfil,
+            @PageableDefault(size = 10, sort = "curtidas", direction = Sort.Direction.DESC) Pageable pageable) {
+        return comentarioListService.getComentariosByPerfilId(idPerfil, pageable);
     }
 }

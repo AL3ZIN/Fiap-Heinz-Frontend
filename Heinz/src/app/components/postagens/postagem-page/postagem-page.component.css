@@ -17,7 +17,7 @@ section {
   grid-template-areas:
     "aside   nb         nb        nb"
     "aside   post       ac        adg "
-    "aside   post       ac         .  ";
+    "aside   post       ac        cc  ";
   color: var(--color-dark);
 }
 app-sidebar {
@@ -26,9 +26,13 @@ app-sidebar {
 app-nav-bar {
   grid-area: nb;
 }
-
-app-column-graph-tipo-rating {
+.comentarios-container {
+  grid-area: cc;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   background-color: var(--color-white);
+  border-radius: var(--border-radius-1);
   box-shadow: var(--box-shadow);
 }
 
@@ -41,7 +45,7 @@ app-column-graph-tipo-rating {
   box-shadow: var(--box-shadow);
 }
 .aggregateDataGraph h1 {
- margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .instagram-embed {
@@ -63,13 +67,15 @@ app-column-graph-tipo-rating {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: var(--box-shadow);
+
 }
 
 .container__scrollable-list {
   background-color: var(--color-white);
   padding: 1rem 2rem;
   height: 100%;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius-1);
 }
 
 .container__scrollable-list h1 {
@@ -82,6 +88,7 @@ app-column-graph-tipo-rating {
 }
 .scrollable-list::-webkit-scrollbar {
   width: 0;
+  display: none;
   background: transparent; /* faz o scrollbar ser invisível */
 }
 
@@ -141,4 +148,78 @@ app-column-graph-tipo-rating {
 }
 .icon--bg:hover {
   background-color: var(--color-danger-fade);
+}
+
+.comentario-card {
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 1rem;
+  background-color: var(--color-white);
+}
+
+.comentario-card:last-child {
+  margin-bottom: 0;
+
+
+}
+.comentario-card:first-child {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.comentarios-scrollable {
+  height: 400px; /* Ajuste para o valor que você desejar */
+  overflow-y: auto;
+  padding-right: 10px; 
+  padding: 0 2rem;
+  background-color: var(--color-light);
+}
+.comentarios-scrollable::-webkit-scrollbar {
+  width: 0;
+  display: none;
+  background: transparent;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  height: 15%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow);
+}
+
+.pagination-controls button {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  padding: 5px 10px;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  border-radius: var(--border-radius-1);
+  max-height: 30px;
+  margin: 0 1rem;
+}
+
+.pagination-controls button:hover{
+  background-color: var(--color-primary-hover);
+}
+
+.pagination-buttons{
+  width: 100%;
+  height: 30px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.comentarios-container-titulo{
+  background-color: var(--color-white);
+  height: 15%;
+  padding: 1rem 2rem;
+  box-shadow: var(--box-shadow);
 }

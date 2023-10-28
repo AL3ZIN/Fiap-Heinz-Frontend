@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RecentEditors } from '../models/recentEditors';
 import { ConsultingTable } from '../models/consultingTable';
-import { ConsultingTableComponent } from '../components/tables/consulting-table/consulting-table.component';
 import { Consulta } from '../models/consulta';
 import { Contador } from '../models/contador';
 import { Postagem } from '../models/postagem';
@@ -13,6 +12,7 @@ import { ResponseWordCloud } from '../models/responseWordCloud';
 import { DataWeeklyOverview } from '../models/dataWeeklyOverview';
 import { DataMonthlyOverview } from '../models/dataMonthlyOverview';
 import { AggregateData } from '../models/aggregateData';
+import { ComentarioList, PaginatedResponse } from '../models/comentarioList';
 
 @Injectable({
   providedIn: 'root',
@@ -88,40 +88,16 @@ export class AppService {
   }
   getAggregateData(id:number): Observable<AggregateData> {
     return this.http.get<AggregateData>(
-      `http://localhost:8080/api/comentario/aggregateData/${id}`
+      `http://localhost:8080/api/comentario/aggregatedata/${id}`
     );
   }
 
-  getGraphRatingData() {
-    return this.http.get<Array<number[]>>(
-      'http://localhost:8080/graph/rating/data'
-    );
-  }
-  getGraphTipoData(): Observable<Array<number[]>> {
-    return this.http.get<Array<number[]>>(
-      'http://localhost:8080/graph/tipo/data'
-    );
-  }
-  getProgressBar(): Observable<Array<number>> {
-    return this.http.get<Array<number>>(
-      'http://localhost:8080/math/progressbar'
-    );
-  }
+  getComentarios(idPerfil: number, page: number = 0, size: number = 3): Observable<PaginatedResponse<ComentarioList>> {
+    let params = new HttpParams()
+        .set('page', String(page))
+        .set('size', String(size));
 
-  getTableRecentEditor(): Observable<Array<RecentEditors>> {
-    return this.http.get<Array<RecentEditors>>(
-      'http://localhost:8080/find/top/datafeed'
-    );
-  }
+    return this.http.get<PaginatedResponse<ComentarioList>>(`http://localhost:8080/api/comentario/${idPerfil}`, { params: params });
+}
 
-  getRankingCanal(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(
-      'http://localhost:8080/contador/ranking'
-    );
-  }
-
-  getConsultingTable(page: number): Observable<any> {
-    const url = `${this.apiUrl}/find/all/page=${page}`;
-    return this.http.get(url);
-  }
 }

@@ -2,6 +2,8 @@ package com.iab.api.repositories;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -44,4 +46,5 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
 
     Long countByTipoAndRatingAndPerfilId(Tipo tipo, Rating rating, Long perfilId);
 
+    Page<Comentario> findByPerfilId(int idPerfil, Pageable pageable);
 }

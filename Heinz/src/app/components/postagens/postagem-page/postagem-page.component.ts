@@ -13,7 +13,12 @@ import {
   faCircle,
   faFaceSmile,
   faSpinner,
+  faHeart,
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  ComentarioList,
+  PaginatedResponse,
+} from 'src/app/models/comentarioList';
 
 @Component({
   selector: 'app-postagem-page',
@@ -32,11 +37,16 @@ export class PostagemPageComponent implements OnInit {
   colorDanger = '#ff7782';
   colorDarkVariant = '#677483';
 
+  comentarioListPR!: PaginatedResponse<ComentarioList>;
+  page: number = 0;
+  totalPages!: number;
+
   faRefresh = faRefresh;
   faTrash = faTrash;
   faCircle = faCircle;
   faFaceSmile = faFaceSmile;
   faSpinner = faSpinner;
+  faHeart = faHeart;
 
   options: CloudOptions = {
     width: 500,
@@ -46,33 +56,57 @@ export class PostagemPageComponent implements OnInit {
   };
   consultaId: ResponseWordCloud = { perfilId: 0 };
 
-
   data: CloudData[] = []; // Inicialize data como um array vazio
   listaWordCloud!: Array<WordCloud>;
   maxNumberOfWords: number = 0;
   stopWords: string[] = [];
 
   ngOnInit() {
-
-
     this.loadStopWords();
     this.fetchWords();
     stopWords.forEach((element) => {
       this.removeWord(element);
     });
   }
+
   async ngAfterViewInit(): Promise<void> {
     await this.getAggregateData();
     this.createChart();
+    this.loadComentarios();
   }
+
+  loadComentarios(): void {
+    this.service
+      .getComentarios(this.consultaId.perfilId, this.page) // 1 é o id_perfil de exemplo
+      .subscribe((data) => {
+        this.comentarioListPR = data;
+        this.totalPages = data.totalPages;
+        this.comentarioListPR.content.sort((a, b) => b.curtidas - a.curtidas) // Atualizando totalPages
+      });
+  }
+
+  nextPage(): void {
+    if(this.page < this.totalPages - 1) { // Evita avançar além da última página
+      this.page++;
+      this.loadComentarios();
+    }
+  }
+
+  prevPage(): void {
+    if(this.page > 0) { // Evita voltar antes da primeira página
+      this.page--;
+      this.loadComentarios();
+    }
+  }
+
   fetchWords() {
-    let iframeInstagram = document.getElementById("iframeInstagram")
+    let iframeInstagram = document.getElementById('iframeInstagram');
     this.route.params.subscribe((params) => {
       this.consultaId.perfilId = +params['id'];
       const consultaEmbedLinkId = params['embed'];
-      const consultaEmbedLink = 
+      const consultaEmbedLink =
         'https://www.instagram.com/p/' + consultaEmbedLinkId + '/embed';
-        iframeInstagram!.setAttribute('src', consultaEmbedLink)
+      iframeInstagram!.setAttribute('src', consultaEmbedLink);
       this.service.postWordCloud(this.consultaId).subscribe((wordCloudList) => {
         this.listaWordCloud = wordCloudList.filter(
           (wordCloud) => !this.isStopWord(wordCloud.palavra)
@@ -128,11 +162,13 @@ export class PostagemPageComponent implements OnInit {
 
   getAggregateData() {
     return new Promise<void>((resolve) => {
-      this.service.getAggregateData(this.consultaId.perfilId).subscribe((dados) => {
-        this.dados = dados;
-        console.log(dados);
-        resolve();
-      });
+      this.service
+        .getAggregateData(this.consultaId.perfilId)
+        .subscribe((dados) => {
+          this.dados = dados;
+          console.log(dados);
+          resolve();
+        });
     });
   }
 
@@ -148,7 +184,7 @@ export class PostagemPageComponent implements OnInit {
         datasets: [
           {
             label: 'Environment',
-            data: [ this.dados.numeroNpsEnvironment * 100],
+            data: [this.dados.numeroNpsEnvironment * 100],
             backgroundColor: [this.colorSucess],
             borderWidth: 0,
             borderRadius: 0,
