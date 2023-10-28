@@ -9,19 +9,19 @@
         </div>
     </div>
     <div class="sidebar">
-        <a href="#" routerLink="home" class="active">
+        <a [routerLink]="['/home']" [ngClass]="{'active': activeLink === 'home'}">
             <span><fa-icon [icon]="faChartPie"></fa-icon></span>
             <h3>Dashboard</h3>
         </a>
-        <a href="#" routerLink="/form">
+        <a [routerLink]="['/form']" [ngClass]="{'active': activeLink === 'form'}">
             <span><fa-icon [icon]="faChartLine"></fa-icon></span>
             <h3>Consulta</h3>
         </a>
-        <a href="#" routerLink="/feedback">
+        <a [routerLink]="['/feedback']" [ngClass]="{'active': activeLink === 'feedback'}">
             <span><fa-icon [icon]="faEnvelope"></fa-icon></span>
             <h3>Feedbacks</h3>
         </a>
-        <a href="#">
+        <a>
             <span><fa-icon [icon]="faGear"></fa-icon></span>
             <h3>Settings</h3>
         </a>

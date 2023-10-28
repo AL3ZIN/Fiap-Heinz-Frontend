@@ -78,7 +78,7 @@ export class PostagemPageComponent implements OnInit {
           (wordCloud) => !this.isStopWord(wordCloud.palavra)
         );
         this.listaWordCloud.sort((a, b) => b.numeroPalavras - a.numeroPalavras);
-        this.listaWordCloud = this.listaWordCloud.slice(0, 10);
+        this.listaWordCloud = this.listaWordCloud.slice(0, 20);
         this.maxNumberOfWords = 0;
         this.listaWordCloud.forEach((element) => {
           this.maxNumberOfWords += element.numeroPalavras;

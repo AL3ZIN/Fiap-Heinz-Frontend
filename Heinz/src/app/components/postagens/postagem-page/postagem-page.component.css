@@ -13,11 +13,11 @@ section {
   height: auto;
   gap: 1.8rem;
   grid-template-columns: 0.4fr 1fr 1fr 1fr;
-  grid-template-rows: 4vh 85vh;
+  grid-template-rows: 4vh 35vh 49vh;
   grid-template-areas:
     "aside   nb         nb        nb"
-    "aside   post       adg       ac"
-    "aside   post        .         ac";
+    "aside   post       ac        adg "
+    "aside   post       ac         .  ";
   color: var(--color-dark);
 }
 app-sidebar {
@@ -27,24 +27,31 @@ app-nav-bar {
   grid-area: nb;
 }
 
-app-column-graph-tipo-rating{
+app-column-graph-tipo-rating {
   background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
 }
 
-.aggregateDataGraph{
+.aggregateDataGraph {
+  border-radius: var(--border-radius-1);
   grid-area: adg;
-  padding: 1rem;
-  background-color: white;
+  padding: 1rem 2rem;
+  background-color: var(--color-white);
   height: auto;
+  box-shadow: var(--box-shadow);
+}
+.aggregateDataGraph h1 {
+ margin-bottom: 1rem;
 }
 
-.instagram-embed{
+.instagram-embed {
   grid-area: post;
   height: 100%;
   width: 100%;
   background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
 }
-.instagram-embed iframe{
+.instagram-embed iframe {
   min-width: 100%;
   min-height: 100%;
   background-color: var(--color-white);
@@ -56,15 +63,16 @@ app-column-graph-tipo-rating{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: var(--box-shadow);
 }
 
-.container__scrollable-list{
+.container__scrollable-list {
   background-color: var(--color-white);
   padding: 1rem 2rem;
   height: 100%;
 }
 
-.container__scrollable-list h1{
+.container__scrollable-list h1 {
   margin-bottom: 1rem;
 }
 .scrollable-list {
@@ -105,7 +113,8 @@ app-column-graph-tipo-rating{
   border-radius: 3px;
 }
 
-.progress-text-left, .progress-text-right {
+.progress-text-left,
+.progress-text-right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -126,11 +135,10 @@ app-column-graph-tipo-rating{
   cursor: pointer;
   transition: 0.1s ease-in-out;
   margin-left: 0.7rem;
-
 }
 .icon--bg--danger {
   color: var(--color-danger);
 }
-.icon--bg:hover{
+.icon--bg:hover {
   background-color: var(--color-danger-fade);
 }

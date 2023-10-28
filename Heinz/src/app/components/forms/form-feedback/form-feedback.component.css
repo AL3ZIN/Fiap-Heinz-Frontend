@@ -1,6 +1,7 @@
 section {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: auto;
   font-family: poppins, sans-serif;
   background-color: var(--color-background);
   box-sizing: border-box;
@@ -17,7 +18,7 @@ section {
   grid-template-areas:
     "aside   nb         nb        nb"
     "aside   fd         fd        fd"
-    "aside   consulta  consulta  consulta"
+    "aside   consulta   consulta  consulta"
     "aside   ctable     ctable    ctable";
   color: var(--color-dark);
 }
@@ -203,7 +204,7 @@ input[type="radio"]:checked + .container__cadastro__toggle__label {
 }
 
 #iconeAtualizacao.fa-spin {
-  animation: spin 1s infinite linear; 
-  transition: transform .5s ease-in-out;
+  animation: spin 1s infinite linear;
+  transition: transform 0.5s ease-in-out;
 }
 /* =======================================CONSULTA=========================================*/

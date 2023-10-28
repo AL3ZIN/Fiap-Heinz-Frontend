@@ -170,3 +170,8 @@ aside .sidebar a:hover span {
         cursor: pointer;
     }
 }
+.active {
+    background-color: #f5f5f5;
+    /* outras propriedades para destacar o item ativo */
+  }
+  

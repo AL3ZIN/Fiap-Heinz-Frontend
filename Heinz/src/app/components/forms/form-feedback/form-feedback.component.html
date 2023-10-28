@@ -53,8 +53,22 @@
                     <ul>
                         <li><a href={{item.postagemLink}} target="_blank">Link</a></li>
                         <li>Feedbacks: {{item.numeroComentarios}}</li>
-                        <li>NPS: <span class="success">{{item.nps}} <fa-icon class="success" id="iconPs"
-                                    [icon]="faFaceSmile"></fa-icon></span></li>
+                        <li>NPS: <span [ngClass]="{
+                            'success': item.nps >= 70, 
+                            'warning': item.nps < 70 && item.nps > 40, 
+                            'danger': item.nps <= 40
+                          }">
+                            {{item.nps}}
+                                <fa-icon [ngClass]="{'displayn': item.nps > 40}" id="iconNg"
+                                    [icon]="faFaceAngry"></fa-icon>
+
+                                <fa-icon [ngClass]="{'displayn': item.nps >= 70 || item.nps <= 40}" id="iconNt"
+                                    [icon]="faFaceMeh"></fa-icon>
+
+                                <fa-icon [ngClass]="{'displayn': item.nps < 70}" id="iconPs"
+                                    [icon]="faFaceSmile"></fa-icon>
+                            </span>
+                        </li>
                         <li>Last updated: {{item.dataCadastro}}</li>
                     </ul>
                     <div class="container__consulta__postagem_bottom__btn">

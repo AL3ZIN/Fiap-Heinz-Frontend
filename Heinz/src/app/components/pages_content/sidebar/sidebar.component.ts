@@ -28,21 +28,21 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        const url = event.urlAfterRedirects; // Obtenha a URL da rota ativa
+        const url = event.urlAfterRedirects;
 
         // Configure o link ativo com base na URL
-        if (url === '/home') {
-          this.activeLink = 'dashboard';
-        } else if (url === '/form') {
-          this.activeLink = 'analytics';
-        } else if (url === '/feedback') {
+        if (url.includes('/home')) {
+          this.activeLink = 'home';
+        } else if (url.includes('/form')) {
+          this.activeLink = 'form';
+        } else if (url.includes('/feedback')) {
           this.activeLink = 'feedback';
         } else {
-          this.activeLink = ''; // Defina o link ativo como vazio para outras rotas
+          this.activeLink = '';
         }
       }
     });
-  }
+}
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;

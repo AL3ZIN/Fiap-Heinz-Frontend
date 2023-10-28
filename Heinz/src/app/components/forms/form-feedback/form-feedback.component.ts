@@ -8,6 +8,8 @@ import {
   faCircle,
   faFaceSmile,
   faSpinner,
+  faFaceAngry,
+  faFaceMeh
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -32,6 +34,8 @@ export class FormFeedbackComponent implements OnInit {
   faCircle = faCircle;
   faFaceSmile = faFaceSmile;
   faSpinner = faSpinner;
+  faFaceAngry = faFaceAngry;
+  faFaceMeh = faFaceMeh;
 
   loadingConsulta: boolean = false;
 
@@ -166,7 +170,6 @@ export class FormFeedbackComponent implements OnInit {
     private router: Router
   ) {
     this.service.consulta$.subscribe((consultas) => {
-      console.log('Dados recebidos:', consultas);
       this.consulta = consultas;
     });
   }
