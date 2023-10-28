@@ -1,0 +1,136 @@
+section {
+  width: 100vw;
+  height: 100vh;
+  font-family: poppins, sans-serif;
+  background-color: var(--color-background);
+  box-sizing: border-box;
+  padding: 1.4rem 1.4rem 1.4rem 0rem;
+}
+
+.container {
+  display: grid;
+  width: 96%;
+  height: auto;
+  gap: 1.8rem;
+  grid-template-columns: 0.4fr 1fr 1fr 1fr;
+  grid-template-rows: 4vh 85vh;
+  grid-template-areas:
+    "aside   nb         nb        nb"
+    "aside   post       adg       ac"
+    "aside   post        .         ac";
+  color: var(--color-dark);
+}
+app-sidebar {
+  grid-area: aside;
+}
+app-nav-bar {
+  grid-area: nb;
+}
+
+app-column-graph-tipo-rating{
+  background-color: var(--color-white);
+}
+
+.aggregateDataGraph{
+  grid-area: adg;
+  padding: 1rem;
+  background-color: white;
+  height: auto;
+}
+
+.instagram-embed{
+  grid-area: post;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-white);
+}
+.instagram-embed iframe{
+  min-width: 100%;
+  min-height: 100%;
+  background-color: var(--color-white);
+}
+
+.container__analise-comentarios {
+  grid-area: ac;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container__scrollable-list{
+  background-color: var(--color-white);
+  padding: 1rem 2rem;
+  height: 100%;
+}
+
+.container__scrollable-list h1{
+  margin-bottom: 1rem;
+}
+.scrollable-list {
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 90%;
+}
+.scrollable-list::-webkit-scrollbar {
+  width: 0;
+  background: transparent; /* faz o scrollbar ser invisível */
+}
+
+.progress-bar-outer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 1rem;
+  padding: 5px;
+}
+
+.progress-bar-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: calc(100% - 30px); /* subtrair a largura do ícone + margem */
+  background-color: var(--color-success-bprogress-fade);
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 500;
+  height: 35px;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  background-color: var(--color-success-bprogress);
+  border-radius: 3px;
+}
+
+.progress-text-left, .progress-text-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.progress-text-left {
+  left: 10px;
+}
+
+.progress-text-right {
+  right: 10px;
+}
+
+.icon--bg {
+  padding: 1px 5px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  margin-left: 0.7rem;
+
+}
+.icon--bg--danger {
+  color: var(--color-danger);
+}
+.icon--bg:hover{
+  background-color: var(--color-danger-fade);
+}

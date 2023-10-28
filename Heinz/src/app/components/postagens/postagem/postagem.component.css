@@ -1,0 +1,10 @@
+.instagram-embed{
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-white);
+}
+.instagram-embed iframe{
+    min-width: 100%;
+    min-height: 100%;
+    background-color: var(--color-white);
+}

@@ -10,10 +10,18 @@ export interface ContadorTipo {
   social: number;
   governance: number;
   general: number;
+  percentEnvironment: number;
+  percentSocial: number;
+  percentGovernance: number;
+  percentGeneral: number;
+
 }
 
 export interface RatingData {
   positive: number;
   neutral: number;
   negative: number;
+  percentPositive: number;
+  percentNeutral: number;
+  percentNegative: number;
 }

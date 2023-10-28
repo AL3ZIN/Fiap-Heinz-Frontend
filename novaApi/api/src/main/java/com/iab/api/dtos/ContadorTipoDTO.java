@@ -8,4 +8,8 @@ public class ContadorTipoDTO {
     private int social;
     private int governance;
     private int general;
+    private int percentEnvironment;
+    private int percentSocial;
+    private int percentGovernance;
+    private int percentGeneral;
 }

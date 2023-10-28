@@ -17,6 +17,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -50,6 +51,7 @@ public class Comentario {
 
     @ManyToOne
     @JoinColumn(name = "perfil_id")
+    @Valid
     private Perfil perfil;
 
 }

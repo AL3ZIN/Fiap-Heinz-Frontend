@@ -20,9 +20,9 @@ import {
   faFaceAngry,
   faFaceSmile,
   faSortUp,
+  faList
 } from '@fortawesome/free-solid-svg-icons';
-import { AppService } from 'src/app/app.service';
-import { async } from '@angular/core/testing';
+import { AppService } from 'src/app/services/app.service';
 
 import {
   faFacebook,
@@ -42,25 +42,12 @@ export class DashboardComponent implements OnInit {
   ntotalFeedbacks!: number;
 
   contador!: Contador;
-  nRatingNeutral!: number;
-  nRatingNegative!: number;
-  nRatingPositive!: number;
-
-  nTipoEnvironment!: number;
-  nTipoSocial!: number;
-  nTipoGovernance!: number;
 
   percentPositive!: number;
   percentNeutral!: number;
   percentNegative!: number;
 
-  namePrimary!: string;
-  nameSecondary!: string;
-  nameTerciary!: string;
 
-  dataPrimary!: number;
-  dataSecondary!: number;
-  dataTerciary!: number;
 
   faChartPie = faChartPie;
   faChartLine = faChartLine;
@@ -82,6 +69,7 @@ export class DashboardComponent implements OnInit {
   faFacebook = faFacebook;
   faTwitter = faTwitter;
   faInstagram = faInstagram;
+  faList = faList;
 
   constructor(private service: AppService) {}
 
@@ -126,10 +114,13 @@ export class DashboardComponent implements OnInit {
     
     function iconNps(nps: number) {
       if (nps >= 70) {
+        NPS?.classList.add('success')
         iconPs?.classList.remove('displayn');
       } else if (nps >= 50 && nps < 70) {
+        NPS?.classList.add('warning')
         iconNt?.classList.remove('displayn');
       } else {
+        NPS?.classList.add('danger')
         iconNg?.classList.remove('displayn');
       }
     }

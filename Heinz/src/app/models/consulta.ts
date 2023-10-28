@@ -1,9 +1,12 @@
 export interface Consulta {
     id: number;
     perfil: string;
-    postagem: string;
+    postagemLink: string;
+    embedLink: string;
     legenda: string;
     canal: string,
+    nps: number,
     numeroComentarios: number,
-    dataCadastro: string
+    dataCadastro: string,
+    isRotating: boolean
 }

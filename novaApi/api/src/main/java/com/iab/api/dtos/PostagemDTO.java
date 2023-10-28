@@ -15,11 +15,11 @@ import lombok.Setter;
 public class PostagemDTO {
     private String perfil;
     private String embedLink;
-    private String postagem;
+    private String postagemLink;
     private String legenda;
     private Canal canal;
-    private Date  dataPostagem;
-    private Date  dataCadastro;
+    private Date dataPostagem;
+    private Date dataCadastro;
     private List<Comentario> comentarios;
 
 }

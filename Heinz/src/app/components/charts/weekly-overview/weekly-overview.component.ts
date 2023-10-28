@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,OnInit, AfterViewInit } from '@angular/core';
+import { DataWeeklyOverview } from 'src/app/models/dataWeeklyOverview';
 import {
   Chart,
   ArcElement,
@@ -26,7 +27,7 @@ import {
   Tooltip,
   SubTitle,
 } from 'chart.js';
-import { AppService } from 'src/app/app.service';
+import { AppService } from 'src/app/services/app.service';
 Chart.register(
   ArcElement,
   LineElement,
@@ -58,42 +59,37 @@ Chart.register(
   templateUrl: './weekly-overview.component.html',
   styleUrls: ['./weekly-overview.component.css'],
 })
-export class WeeklyOverviewComponent {
+export class WeeklyOverviewComponent implements OnInit, AfterViewInit {
   constructor(private service: AppService) {}
 
-  dados: Array<number[]> = [];
-  EnvironmentData: number[] = [];
-  SocialData: number[] = [];
-  GovernaceData: number[] = [];
+ dados!: DataWeeklyOverview;
 
   labels: string[] = []; // Nomes das labels
 
   colorSucess = '#41f1b6';
   colorPrimary = '#7380ec';
   colorDanger = '#ff7782';
+  colorDarkVariant ='#677483';
 
   async ngOnInit() {
-    await this.getGraphTipoDataAsync()
-  }
-  async getGraphTipoDataAsync() {
-    this.service.getGraphTipoData().subscribe((result) => {
-      this.dados = result;
-      this.extractData();
-      this.createChart();
 
-      console.log(this.dados)
-    });
   }
-  extractData() {
-    if (this.dados.length >= 3) {
-      this.EnvironmentData = this.dados[0];
-      this.SocialData = this.dados[1];
-      this.GovernaceData = this.dados[2];
-      console.log(this.EnvironmentData);
-      console.log(this.SocialData);
-      console.log(this.GovernaceData);
-    }
-  }
+  async ngAfterViewInit(): Promise<void> {
+    await this.getDataWeeklyOverview();
+    this.createChart();
+}
+
+
+
+getDataWeeklyOverview() {
+  return new Promise<void>((resolve) => {
+      this.service.getDataWeeklyOverview().subscribe((dados) => {
+          this.dados = dados;
+          resolve();
+      });
+  });
+}
+    
   createChart() {
     const myChart = new Chart('barChart', {
       type: 'bar',
@@ -102,27 +98,35 @@ export class WeeklyOverviewComponent {
         datasets: [
           {
             label: 'Environment',
-            data: this.EnvironmentData,
+            data: this.dados.numeroComentariosEnvironment,
             backgroundColor: [this.colorSucess],
             borderWidth: 0,
             borderRadius: 20,
-            barThickness: 20,
+            barThickness: 15,
           },
           {
             label: 'Social',
-            data: this.SocialData,
+            data: this.dados.numeroComentariosSocial,
             backgroundColor: [this.colorPrimary],
             borderWidth: 0,
             borderRadius: 20,
-            barThickness: 20,
+            barThickness: 15,
           },
           {
             label: 'Governance',
-            data: this.GovernaceData,
+            data: this.dados.numeroComentariosGovernance,
             backgroundColor: [this.colorDanger],
             borderWidth: 0,
             borderRadius: 20,
-            barThickness: 20,
+            barThickness: 15,
+          },
+          {
+            label: 'General',
+            data: this.dados.numeroComentariosGeneral,
+            backgroundColor: [this.colorDarkVariant],
+            borderWidth: 0,
+            borderRadius: 20,
+            barThickness: 15,
           },
         ],
       },

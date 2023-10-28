@@ -29,6 +29,10 @@
   --color-dark-variant: #677483;
   --color-background: #f4f5fa;
   --color-blue: #007BFF;
+  --color-blue-hover: rgb(34, 141, 255);
+
+  --color-success-bprogress: #41f1b6;
+  --color-success-bprogress-fade: #41f1b670;
 
   --color-success-fade: #41f1b670;
   --color-danger-fade: #ff77828f;
@@ -57,6 +61,8 @@
   --color-dark-variant: #a3bdcc;
   --color-light: rgba(0, 0, 0, 0.4);
   --box-shadow: var(--color-light) 0px 2px 10px 0px;
+  --color-success-bprogress: #36cc9a;
+  --color-success-bprogress-fade: #36cc9a98;
 }
 
 /* h1 {

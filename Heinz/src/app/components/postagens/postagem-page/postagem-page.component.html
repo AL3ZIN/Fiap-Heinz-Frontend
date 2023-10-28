@@ -1,0 +1,37 @@
+<section>
+    <div class="container">
+        <app-nav-bar></app-nav-bar>
+        <app-sidebar></app-sidebar>
+        <div class="instagram-embed"><iframe id="iframeInstagram" frameborder="0"
+                scrolling="no" allowtransparency="true"></iframe>
+
+        </div>
+        <div class="container__analise-comentarios">
+            <div class="container__scrollable-list">
+                <h1>TOP 10 Palavras mais usadas</h1>
+                <div class="scrollable-list">
+                    <div class="progress-bar-outer" *ngFor="let word of listaWordCloud">
+                        <div class="progress-bar-section">
+                            <div class="progress-bar-inner"
+                                [style.width]="getWordPercentage(word.numeroPalavras) + '%'"></div>
+                            <span class="progress-text-left">{{word.palavra}}</span>
+                            <span class="progress-text-right">{{word.numeroPalavras }}</span>
+                        </div>
+                        <fa-icon (click)="removeWord(word.palavra)" class="icon--bg icon--bg--danger" id="iconN"
+                            [icon]="faTrash"></fa-icon>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="aggregateDataGraph">
+            <canvas #chartCanvas></canvas>
+          </div>
+          
+
+    </div>
+
+
+</section>

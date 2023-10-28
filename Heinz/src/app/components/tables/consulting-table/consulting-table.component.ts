@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppService } from 'src/app/app.service';
+import { AppService } from 'src/app/services/app.service';
 import { format } from 'date-fns';
 import { ConsultingTable } from 'src/app/models/consultingTable';
 import {

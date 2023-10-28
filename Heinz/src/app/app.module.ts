@@ -11,12 +11,18 @@ import { SidebarComponent } from './components/pages_content/sidebar/sidebar.com
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavBarComponent } from './components/pages_content/nav-bar/nav-bar.component';
 import { WeeklyOverviewComponent } from './components/charts/weekly-overview/weekly-overview.component';
-import { LineGraphRatingComponent } from './components/charts/line-graph-rating/line-graph-rating.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecentEditorTableComponent } from './components/tables/recent-editor-table/recent-editor-table.component';
 import { FormFeedbackComponent } from './components/forms/form-feedback/form-feedback.component';
 import { Sidebar2Component } from './components/pages_content/sidebar2/sidebar2.component';
 import { ConsultingTableComponent } from './components/tables/consulting-table/consulting-table.component';
+import { PostagemComponent } from './components/postagens/postagem/postagem.component';
+import { PostagemPageComponent } from './components/postagens/postagem-page/postagem-page.component';
+import { TagCloudComponent } from 'angular-tag-cloud-module';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ColumnGraphTipoRatingComponent } from './components/charts/column-graph-tipo-rating/column-graph-tipo-rating.component';
+import { MonthlyOverviewComponent } from './components/charts/monthly-overview/monthly-overview.component';
+
 
 
 @NgModule({
@@ -27,12 +33,15 @@ import { ConsultingTableComponent } from './components/tables/consulting-table/c
     DashboardComponent,
     NavBarComponent,
     WeeklyOverviewComponent,
-    LineGraphRatingComponent,
     RecentEditorTableComponent,
     AppComponent,
     FormFeedbackComponent,
     Sidebar2Component,
-    ConsultingTableComponent
+    ConsultingTableComponent,
+    PostagemComponent,
+    PostagemPageComponent,
+    ColumnGraphTipoRatingComponent,
+    MonthlyOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +50,8 @@ import { ConsultingTableComponent } from './components/tables/consulting-table/c
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    TagCloudComponent,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

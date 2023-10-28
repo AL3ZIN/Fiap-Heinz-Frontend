@@ -3,6 +3,7 @@ package com.iab.api.models;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.iab.api.enums.Canal;
 
 import jakarta.persistence.CascadeType;
@@ -35,7 +36,7 @@ public class Perfil {
 
     @NotNull
     @Column(unique = true)
-    private String postagem;
+    private String postagemLink;
 
     private String legenda;
 
@@ -52,6 +53,7 @@ public class Perfil {
     private Date dataCadastro;
 
     @OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Comentario> comentarios;
 
 }
